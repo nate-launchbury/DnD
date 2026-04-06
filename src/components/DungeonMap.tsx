@@ -21,53 +21,53 @@ interface ThemeDef {
 const THEMES: Record<MapTheme, ThemeDef> = {
   classic: {
     label: 'Dungeon',
-    bg: ['#16162e', '#0a0a18'], fog: '#08081a',
-    shadow: 'rgba(0,0,20,0.6)', ambientTint: 'rgba(100,100,180,0.04)',
-    swatch: ['#22223a', '#3e3e5e'],
-    floor: { base: [72, 68, 95], variation: 20, mortar: [28, 26, 50], crack: [22, 18, 40], moss: [50, 80, 55] },
-    wall: { base: [38, 35, 60], variation: 12, mortar: [18, 16, 36], top: [85, 80, 120], highlight: 15 },
-    door: { wood: [95, 65, 35], grain: [70, 48, 22], metal: [130, 135, 150] },
-    water: { deep: [15, 22, 50], surface: [40, 55, 95], highlight: [70, 100, 150] },
+    bg: ['#1a1710', '#0e0c08'], fog: '#0a0908',
+    shadow: 'rgba(0,0,0,0.65)', ambientTint: 'rgba(255,200,120,0.04)',
+    swatch: ['#8a7d6e', '#5a5040'],
+    floor: { base: [155, 140, 120], variation: 22, mortar: [82, 70, 55], crack: [58, 48, 35], moss: [65, 95, 48] },
+    wall: { base: [20, 18, 16], variation: 6, mortar: [10, 9, 8], top: [40, 35, 28], highlight: 4 },
+    door: { wood: [130, 85, 42], grain: [95, 60, 28], metal: [165, 155, 135] },
+    water: { deep: [15, 55, 78], surface: [50, 148, 168], highlight: [88, 198, 218] },
   },
   cave: {
     label: 'Cave',
-    bg: ['#1a1408', '#0c0804'], fog: '#0e0a04',
-    shadow: 'rgba(10,5,0,0.6)', ambientTint: 'rgba(180,140,80,0.05)',
-    swatch: ['#4a3828', '#7a6850'],
-    floor: { base: [90, 72, 55], variation: 22, mortar: [40, 28, 15], crack: [30, 18, 8], moss: [65, 100, 40] },
-    wall: { base: [55, 42, 28], variation: 14, mortar: [28, 18, 8], top: [100, 85, 62], highlight: 12 },
-    door: { wood: [105, 80, 48], grain: [80, 58, 30], metal: [140, 120, 95] },
-    water: { deep: [22, 30, 20], surface: [50, 65, 50], highlight: [70, 90, 65] },
+    bg: ['#1a1508', '#0e0c06'], fog: '#0c0a04',
+    shadow: 'rgba(10,5,0,0.65)', ambientTint: 'rgba(200,160,80,0.05)',
+    swatch: ['#9a8568', '#6a5838'],
+    floor: { base: [148, 125, 92], variation: 26, mortar: [78, 62, 42], crack: [55, 40, 25], moss: [75, 115, 45] },
+    wall: { base: [24, 20, 14], variation: 6, mortar: [12, 10, 7], top: [45, 38, 26], highlight: 4 },
+    door: { wood: [125, 90, 48], grain: [92, 62, 30], metal: [155, 135, 105] },
+    water: { deep: [18, 55, 42], surface: [48, 128, 92], highlight: [78, 168, 118] },
   },
   crypt: {
     label: 'Crypt',
-    bg: ['#101418', '#080a0e'], fog: '#060810',
-    shadow: 'rgba(0,0,15,0.65)', ambientTint: 'rgba(120,140,180,0.05)',
-    swatch: ['#2a2e36', '#404852'],
-    floor: { base: [58, 62, 75], variation: 18, mortar: [25, 28, 38], crack: [18, 20, 30], moss: [42, 60, 50] },
-    wall: { base: [32, 36, 48], variation: 10, mortar: [16, 18, 28], top: [72, 78, 95], highlight: 12 },
-    door: { wood: [60, 50, 42], grain: [45, 35, 28], metal: [105, 112, 128] },
-    water: { deep: [8, 12, 28], surface: [25, 35, 60], highlight: [45, 60, 95] },
+    bg: ['#121418', '#080a0e'], fog: '#0a0c10',
+    shadow: 'rgba(0,0,10,0.65)', ambientTint: 'rgba(120,140,180,0.05)',
+    swatch: ['#7a7e88', '#4a4e58'],
+    floor: { base: [132, 128, 122], variation: 18, mortar: [68, 65, 60], crack: [48, 44, 38], moss: [55, 72, 55] },
+    wall: { base: [16, 16, 22], variation: 5, mortar: [9, 9, 12], top: [35, 35, 42], highlight: 3 },
+    door: { wood: [72, 60, 50], grain: [52, 42, 32], metal: [115, 120, 135] },
+    water: { deep: [10, 15, 35], surface: [30, 42, 72], highlight: [50, 68, 108] },
   },
   forest: {
     label: 'Forest',
-    bg: ['#0c1a0c', '#040e04'], fog: '#040c04',
-    shadow: 'rgba(0,12,0,0.55)', ambientTint: 'rgba(80,160,60,0.05)',
-    swatch: ['#1e3e22', '#3e5e3c'],
-    floor: { base: [52, 68, 48], variation: 22, mortar: [22, 35, 18], crack: [16, 28, 12], moss: [55, 95, 35] },
-    wall: { base: [30, 45, 28], variation: 14, mortar: [14, 24, 12], top: [68, 92, 58], highlight: 14 },
-    door: { wood: [78, 68, 35], grain: [58, 50, 25], metal: [95, 110, 80] },
-    water: { deep: [10, 25, 15], surface: [28, 58, 35], highlight: [40, 80, 50] },
+    bg: ['#0e180e', '#060e06'], fog: '#080c08',
+    shadow: 'rgba(0,10,0,0.6)', ambientTint: 'rgba(80,160,60,0.05)',
+    swatch: ['#5e7e52', '#3e5e3c'],
+    floor: { base: [118, 128, 98], variation: 24, mortar: [58, 65, 45], crack: [42, 50, 32], moss: [68, 110, 40] },
+    wall: { base: [14, 22, 12], variation: 5, mortar: [8, 12, 7], top: [38, 45, 32], highlight: 3 },
+    door: { wood: [95, 82, 42], grain: [68, 58, 28], metal: [105, 118, 88] },
+    water: { deep: [12, 32, 18], surface: [35, 75, 45], highlight: [55, 105, 62] },
   },
   infernal: {
     label: 'Infernal',
-    bg: ['#200c08', '#100404'], fog: '#0c0404',
-    shadow: 'rgba(15,0,0,0.6)', ambientTint: 'rgba(255,60,20,0.06)',
-    swatch: ['#382020', '#603838'],
-    floor: { base: [75, 38, 30], variation: 20, mortar: [35, 15, 10], crack: [25, 8, 5], moss: [75, 45, 28] },
-    wall: { base: [48, 25, 20], variation: 12, mortar: [22, 10, 8], top: [90, 58, 50], highlight: 12 },
-    door: { wood: [78, 40, 25], grain: [58, 28, 18], metal: [128, 110, 95] },
-    water: { deep: [60, 15, 0], surface: [140, 50, 10], highlight: [210, 90, 20], lava: true },
+    bg: ['#200c08', '#100404'], fog: '#0e0606',
+    shadow: 'rgba(15,0,0,0.65)', ambientTint: 'rgba(255,60,20,0.06)',
+    swatch: ['#8a4838', '#603020'],
+    floor: { base: [142, 72, 52], variation: 22, mortar: [72, 32, 22], crack: [52, 22, 12], moss: [85, 52, 30] },
+    wall: { base: [28, 12, 8], variation: 6, mortar: [14, 7, 5], top: [48, 28, 20], highlight: 4 },
+    door: { wood: [95, 48, 28], grain: [68, 32, 18], metal: [140, 118, 100] },
+    water: { deep: [65, 15, 0], surface: [148, 55, 12], highlight: [218, 95, 22], lava: true },
   },
 }
 
@@ -113,187 +113,333 @@ function rgba(r: number, g: number, b: number, a: number): string {
   return `rgba(${clamp(Math.round(r))},${clamp(Math.round(g))},${clamp(Math.round(b))},${a.toFixed(3)})`
 }
 
-interface Stone { x: number; y: number; w: number; h: number; ci: number }
-
-function getFloorLayout(gx: number, gy: number): Stone[] {
-  const r1 = h(gx, gy, 10), r2 = h(gx, gy, 11), r3 = h(gx, gy, 12), r4 = h(gx, gy, 13)
-  const g = 2.2
-  const stones: Stone[] = []
-  const pat = Math.floor(r1 * 6)
-
-  if (pat === 0) {
-    const sy = 13 + Math.floor(r2 * 7)
-    stones.push({ x: g, y: g, w: S - g * 2, h: sy - g * 1.5, ci: 0 })
-    stones.push({ x: g, y: sy + g * 0.5, w: S - g * 2, h: S - sy - g * 1.5, ci: 1 })
-  } else if (pat === 1) {
-    const sx = 13 + Math.floor(r2 * 7)
-    stones.push({ x: g, y: g, w: sx - g * 1.5, h: S - g * 2, ci: 0 })
-    stones.push({ x: sx + g * 0.5, y: g, w: S - sx - g * 1.5, h: S - g * 2, ci: 1 })
-  } else if (pat <= 3) {
-    const sx = 13 + Math.floor(r2 * 6)
-    const sy = 13 + Math.floor(r3 * 6)
-    stones.push({ x: g, y: g, w: sx - g * 1.5, h: sy - g * 1.5, ci: 0 })
-    stones.push({ x: sx + g * 0.5, y: g, w: S - sx - g * 1.5, h: sy - g * 1.5, ci: 1 })
-    stones.push({ x: g, y: sy + g * 0.5, w: sx - g * 1.5, h: S - sy - g * 1.5, ci: 2 })
-    stones.push({ x: sx + g * 0.5, y: sy + g * 0.5, w: S - sx - g * 1.5, h: S - sy - g * 1.5, ci: 3 })
-  } else if (pat === 4) {
-    const sy = 14 + Math.floor(r2 * 5)
-    const sx = 12 + Math.floor(r3 * 8)
-    stones.push({ x: g, y: g, w: S - g * 2, h: sy - g * 1.5, ci: 0 })
-    stones.push({ x: g, y: sy + g * 0.5, w: sx - g * 1.5, h: S - sy - g * 1.5, ci: 1 })
-    stones.push({ x: sx + g * 0.5, y: sy + g * 0.5, w: S - sx - g * 1.5, h: S - sy - g * 1.5, ci: 2 })
-  } else {
-    const sy1 = 9 + Math.floor(r2 * 4)
-    const sy2 = sy1 + 10 + Math.floor(r3 * 4)
-    const sx1 = 13 + Math.floor(r4 * 6)
-    stones.push({ x: g, y: g, w: sx1 - g * 1.5, h: sy1 - g * 1.5, ci: 0 })
-    stones.push({ x: sx1 + g * 0.5, y: g, w: S - sx1 - g * 1.5, h: sy1 - g * 1.5, ci: 1 })
-    stones.push({ x: g, y: sy1 + g * 0.5, w: S - g * 2, h: sy2 - sy1 - g, ci: 2 })
-    stones.push({ x: g, y: sy2 + g * 0.5, w: S - g * 2, h: S - sy2 - g * 1.5, ci: 3 })
-  }
-  return stones
-}
-
-function stoneRgb(base: [number, number, number], variation: number, gx: number, gy: number, ci: number): [number, number, number] {
-  const v = (h(gx, gy, 200 + ci) - 0.5) * variation * 2
-  const warm = (h(gx, gy, 300 + ci) - 0.5) * 8
-  return [base[0] + v + warm, base[1] + v, base[2] + v - warm * 0.5]
-}
-
-function drawStone(ctx: CanvasRenderingContext2D, px: number, py: number, s: Stone, color: [number, number, number], gx: number, gy: number) {
-  const sx = px + s.x, sy = py + s.y, sw = s.w, sh = s.h
-  if (sw < 2 || sh < 2) return
-
-  const grad = ctx.createLinearGradient(sx, sy, sx + sw * 0.7, sy + sh)
-  grad.addColorStop(0, rgb(color[0] + 14, color[1] + 14, color[2] + 14))
-  grad.addColorStop(0.35, rgb(color[0] + 4, color[1] + 4, color[2] + 4))
-  grad.addColorStop(0.7, rgb(color[0], color[1], color[2]))
-  grad.addColorStop(1, rgb(color[0] - 10, color[1] - 10, color[2] - 10))
-
-  ctx.beginPath()
-  ctx.roundRect(sx, sy, sw, sh, 1.5)
-  ctx.fillStyle = grad
-  ctx.fill()
-
-  const noiseVal = fbm((px + s.x + sw / 2) * 0.06, (py + s.y + sh / 2) * 0.06, 3, 500 + s.ci)
-  ctx.fillStyle = `rgba(${noiseVal > 0.55 ? '255,255,255' : '0,0,0'},${Math.abs(noiseVal - 0.5) * 0.15})`
-  ctx.beginPath()
-  ctx.roundRect(sx + 1, sy + 1, sw - 2, sh - 2, 1)
-  ctx.fill()
-
-  ctx.fillStyle = 'rgba(255,255,255,0.07)'
-  ctx.fillRect(sx + 1.5, sy + 0.5, sw - 3, 1.2)
-  ctx.fillStyle = 'rgba(255,255,255,0.04)'
-  ctx.fillRect(sx + 0.5, sy + 1.5, 1.2, sh - 3)
-
-  ctx.fillStyle = 'rgba(0,0,0,0.12)'
-  ctx.fillRect(sx + 1.5, sy + sh - 1.5, sw - 3, 1.2)
-  ctx.fillStyle = 'rgba(0,0,0,0.08)'
-  ctx.fillRect(sx + sw - 1.5, sy + 1.5, 1.2, sh - 3)
-}
-
 function drawFloorTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, gy: number) {
   const px = gx * S, py = gy * S
 
-  ctx.fillStyle = rgb(t.floor.mortar[0], t.floor.mortar[1], t.floor.mortar[2])
+  const n = fbm(gx * 0.5, gy * 0.5, 3, 100)
+  const warm = (fbm(gx * 0.3 + 7, gy * 0.3 + 7, 2, 200) - 0.5) * 12
+  const v = (n - 0.5) * t.floor.variation * 1.8
+  const cr = t.floor.base[0] + v + warm
+  const cg = t.floor.base[1] + v
+  const cb = t.floor.base[2] + v - warm * 0.4
+
+  ctx.fillStyle = rgb(cr, cg, cb)
   ctx.fillRect(px, py, S, S)
 
-  const stones = getFloorLayout(gx, gy)
-  for (const s of stones) {
-    const col = stoneRgb(t.floor.base, t.floor.variation, gx, gy, s.ci)
-    drawStone(ctx, px, py, s, col, gx, gy)
-  }
+  const angle = h(gx, gy, 80) * Math.PI * 2
+  const grad = ctx.createLinearGradient(
+    px + S / 2 + Math.cos(angle) * S * 0.5, py + S / 2 + Math.sin(angle) * S * 0.5,
+    px + S / 2 - Math.cos(angle) * S * 0.5, py + S / 2 - Math.sin(angle) * S * 0.5
+  )
+  grad.addColorStop(0, 'rgba(255,255,255,0.05)')
+  grad.addColorStop(1, 'rgba(0,0,0,0.05)')
+  ctx.fillStyle = grad
+  ctx.fillRect(px, py, S, S)
 
-  const r1 = h(gx, gy, 50), r2 = h(gx, gy, 51), r3 = h(gx, gy, 52), r4 = h(gx, gy, 53)
-
-  if (r1 > 0.55) {
-    const cx = px + 4 + r2 * 22, cy = py + 4 + r3 * 22
-    const dx = (5 + r4 * 10) * (r2 > 0.5 ? 1 : -1)
-    const dy = (3 + r1 * 6) * (r3 > 0.5 ? 1 : -1)
-    ctx.beginPath()
-    ctx.moveTo(cx, cy)
-    ctx.lineTo(cx + dx, cy + dy)
-    ctx.lineTo(cx + dx + dx * 0.3, cy + dy + dy * 0.4)
-    ctx.strokeStyle = rgb(t.floor.crack[0], t.floor.crack[1], t.floor.crack[2])
-    ctx.lineWidth = 0.6 + r4 * 0.5
-    ctx.globalAlpha = 0.5 + r1 * 0.2
-    ctx.stroke()
-    ctx.globalAlpha = 1
-  }
-
-  if (r3 > 0.78) {
-    const mx = px + 3 + r1 * 24, my = py + 3 + r2 * 24
-    ctx.beginPath()
-    ctx.ellipse(mx, my, 3 + r4 * 3, 2 + r3 * 2, r2 * Math.PI, 0, Math.PI * 2)
-    ctx.fillStyle = rgba(t.floor.moss[0], t.floor.moss[1], t.floor.moss[2], 0.25 + r1 * 0.15)
-    ctx.fill()
+  const stain = fbm(gx * 0.25, gy * 0.25, 3, 42)
+  if (stain > 0.48) {
+    ctx.fillStyle = `rgba(40,30,15,${((stain - 0.48) * 0.5).toFixed(3)})`
+    ctx.fillRect(px, py, S, S)
+  } else if (stain < 0.38) {
+    ctx.fillStyle = `rgba(255,240,200,${((0.38 - stain) * 0.15).toFixed(3)})`
+    ctx.fillRect(px, py, S, S)
   }
 }
 
-function drawWallTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, gy: number, floorBelow: boolean, floorAbove: boolean) {
+function drawWallTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, gy: number, _theme: MapTheme) {
   const px = gx * S, py = gy * S
-  const r1 = h(gx, gy, 30), r2 = h(gx, gy, 31), r3 = h(gx, gy, 32)
-
-  ctx.fillStyle = rgb(t.wall.mortar[0], t.wall.mortar[1], t.wall.mortar[2])
+  const n = fbm(gx * 0.3, gy * 0.3, 3, 777)
+  const v = (n - 0.5) * 15
+  ctx.fillStyle = rgb(t.wall.base[0] + v, t.wall.base[1] + v, t.wall.base[2] + v)
   ctx.fillRect(px, py, S, S)
+}
 
-  const courseH = [10 + Math.floor(r1 * 3), 10 + Math.floor(r2 * 3), 0]
-  courseH[2] = S - courseH[0] - courseH[1]
-  const mg = 1.2
+function drawWallIllustrations(ctx: CanvasRenderingContext2D, t: ThemeDef, theme: MapTheme, grid: { type: string }[][], width: number, height: number) {
+  const W = width * S, H = height * S
+  const isW = (px: number, py: number) => {
+    const gx = Math.floor(px / S), gy = Math.floor(py / S)
+    if (gx < 0 || gx >= width || gy < 0 || gy >= height) return false
+    return grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty'
+  }
 
-  let cy = 0
-  for (let row = 0; row < 3; row++) {
-    const ch = courseH[row]
-    const numB = row === 1 ? 2 : 3
-    const stagger = row === 1 ? 4 + Math.floor(r3 * 6) : 0
-    let bx = stagger
+  ctx.save()
+  ctx.beginPath()
+  for (let gy = 0; gy < height; gy++)
+    for (let gx = 0; gx < width; gx++)
+      if (grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty')
+        ctx.rect(gx * S, gy * S, S, S)
+  ctx.clip()
 
-    for (let b = 0; b < numB; b++) {
-      const nomW = (S - stagger) / numB
-      const jitter = (h(gx * 7 + b, gy * 13 + row, 40) - 0.5) * 3
-      let bw = nomW + jitter
-      if (b === numB - 1) bw = S - bx
+  let wc = 0
+  for (let gy = 0; gy < height; gy++)
+    for (let gx = 0; gx < width; gx++)
+      if (grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty') wc++
 
-      const bsx = px + bx + mg / 2
-      const bsy = py + cy + mg / 2
-      const bsw = Math.max(1, bw - mg)
-      const bsh = Math.max(1, ch - mg)
-
-      if (bsw > 1 && bsh > 1) {
-        const v = (h(gx, gy, 500 + row * 4 + b) - 0.5) * t.wall.variation * 2
-        const col: [number, number, number] = [t.wall.base[0] + v, t.wall.base[1] + v, t.wall.base[2] + v]
-
-        const grad = ctx.createLinearGradient(bsx, bsy, bsx, bsy + bsh)
-        grad.addColorStop(0, rgb(col[0] + t.wall.highlight, col[1] + t.wall.highlight, col[2] + t.wall.highlight))
-        grad.addColorStop(0.5, rgb(col[0], col[1], col[2]))
-        grad.addColorStop(1, rgb(col[0] - 6, col[1] - 6, col[2] - 6))
-
+  if (theme === 'classic') {
+    for (let i = 0; i < Math.floor(wc * 0.35); i++) {
+      const x = h(i, 0, 3000) * W, y = h(i, 0, 3001) * H
+      if (!isW(x, y)) continue
+      const r = 6 + h(i, 0, 3002) * 22
+      const aspect = 0.5 + h(i, 0, 3004) * 0.5
+      const shade = 18 + h(i, 0, 3003) * 35
+      ctx.beginPath()
+      ctx.ellipse(x, y, r, r * aspect, h(i, 0, 3005) * Math.PI, 0, Math.PI * 2)
+      const g = ctx.createRadialGradient(x - r * 0.25, y - r * aspect * 0.25, 0, x, y, r)
+      g.addColorStop(0, rgb(shade + 28, shade + 22, shade + 14))
+      g.addColorStop(0.5, rgb(shade + 5, shade, shade - 5))
+      g.addColorStop(1, rgb(shade - 10, shade - 15, shade - 20))
+      ctx.fillStyle = g
+      ctx.fill()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.7); i++) {
+      const x = h(i, 1, 4000) * W, y = h(i, 1, 4001) * H
+      if (!isW(x, y)) continue
+      ctx.fillStyle = `rgba(48,42,32,${(0.25 + h(i, 1, 4003) * 0.4).toFixed(2)})`
+      ctx.beginPath()
+      ctx.arc(x, y, 1 + h(i, 1, 4002) * 3.5, 0, Math.PI * 2)
+      ctx.fill()
+    }
+  } else if (theme === 'cave') {
+    for (let i = 0; i < Math.floor(wc * 0.18); i++) {
+      const x = h(i, 2, 3000) * W, y = h(i, 2, 3001) * H
+      if (!isW(x, y)) continue
+      const r = 12 + h(i, 2, 3002) * 35
+      const aspect = 0.5 + h(i, 2, 3004) * 0.5
+      const shade = 22 + h(i, 2, 3003) * 38
+      ctx.beginPath()
+      ctx.ellipse(x, y, r, r * aspect, h(i, 2, 3005) * Math.PI, 0, Math.PI * 2)
+      const g = ctx.createRadialGradient(x - r * 0.3, y - r * aspect * 0.3, 0, x, y, r)
+      g.addColorStop(0, rgb(shade + 25, shade + 18, shade + 8))
+      g.addColorStop(0.5, rgb(shade, shade - 5, shade - 14))
+      g.addColorStop(1, rgb(shade - 14, shade - 20, shade - 26))
+      ctx.fillStyle = g
+      ctx.fill()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.15); i++) {
+      const x = h(i, 3, 5000) * W, y = h(i, 3, 5001) * H
+      if (!isW(x, y)) continue
+      const bw = 5 + h(i, 3, 5002) * 10
+      const bh = 14 + h(i, 3, 5003) * 32
+      const lean = (h(i, 3, 5004) - 0.5) * 6
+      ctx.beginPath()
+      ctx.moveTo(x - bw / 2, y)
+      ctx.lineTo(x + lean, y - bh)
+      ctx.lineTo(x + bw / 2, y)
+      ctx.closePath()
+      const sg = ctx.createLinearGradient(x - bw / 2, y, x + lean, y - bh)
+      sg.addColorStop(0, rgb(50, 42, 28))
+      sg.addColorStop(0.5, rgb(44, 36, 24))
+      sg.addColorStop(1, rgb(58, 50, 36))
+      ctx.fillStyle = sg
+      ctx.fill()
+      ctx.beginPath()
+      ctx.moveTo(x + lean, y - bh)
+      ctx.lineTo(x + bw / 2, y)
+      ctx.strokeStyle = 'rgba(72,64,48,0.5)'
+      ctx.lineWidth = 0.8
+      ctx.stroke()
+    }
+  } else if (theme === 'crypt') {
+    for (let i = 0; i < Math.floor(wc * 0.1); i++) {
+      const x = h(i, 4, 3000) * W, y = h(i, 4, 3001) * H
+      if (!isW(x, y)) continue
+      const tw = 10 + h(i, 4, 3002) * 14
+      const th = 20 + h(i, 4, 3003) * 28
+      const shade = 28 + h(i, 4, 3004) * 20
+      ctx.fillStyle = rgb(shade, shade, shade + 7)
+      ctx.beginPath()
+      ctx.roundRect(x - tw / 2, y - th + tw / 2, tw, th - tw / 2, [0, 0, 2, 2])
+      ctx.fill()
+      ctx.beginPath()
+      ctx.arc(x, y - th + tw / 2, tw / 2, Math.PI, 0)
+      ctx.fill()
+      ctx.strokeStyle = `rgba(${shade + 28},${shade + 28},${shade + 35},0.5)`
+      ctx.lineWidth = 1
+      ctx.beginPath()
+      ctx.moveTo(x, y - th * 0.72)
+      ctx.lineTo(x, y - th * 0.22)
+      ctx.moveTo(x - tw * 0.28, y - th * 0.52)
+      ctx.lineTo(x + tw * 0.28, y - th * 0.52)
+      ctx.stroke()
+      ctx.fillStyle = 'rgba(0,0,0,0.12)'
+      ctx.beginPath()
+      ctx.ellipse(x, y + 3, tw * 0.7, 4, 0, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.05); i++) {
+      const x = h(i, 5, 6000) * W, y = h(i, 5, 6001) * H
+      if (!isW(x, y)) continue
+      const cw = 12 + h(i, 5, 6002) * 10
+      const ch = 28 + h(i, 5, 6003) * 26
+      const angle = (h(i, 5, 6004) - 0.5) * 0.7
+      ctx.save()
+      ctx.translate(x, y)
+      ctx.rotate(angle)
+      const hw = cw / 2, hh = ch / 2
+      ctx.beginPath()
+      ctx.moveTo(-hw * 0.55, -hh)
+      ctx.lineTo(hw * 0.55, -hh)
+      ctx.lineTo(hw, -hh * 0.6)
+      ctx.lineTo(hw, hh * 0.7)
+      ctx.lineTo(hw * 0.55, hh)
+      ctx.lineTo(-hw * 0.55, hh)
+      ctx.lineTo(-hw, hh * 0.7)
+      ctx.lineTo(-hw, -hh * 0.6)
+      ctx.closePath()
+      ctx.fillStyle = rgb(32, 22, 15)
+      ctx.fill()
+      ctx.strokeStyle = 'rgba(52,38,28,0.6)'
+      ctx.lineWidth = 0.8
+      ctx.stroke()
+      ctx.strokeStyle = 'rgba(65,50,38,0.4)'
+      ctx.lineWidth = 1.2
+      ctx.beginPath()
+      ctx.moveTo(0, -hh * 0.5)
+      ctx.lineTo(0, hh * 0.4)
+      ctx.moveTo(-hw * 0.3, -hh * 0.2)
+      ctx.lineTo(hw * 0.3, -hh * 0.2)
+      ctx.stroke()
+      ctx.restore()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.3); i++) {
+      const x = h(i, 6, 7000) * W, y = h(i, 6, 7001) * H
+      if (!isW(x, y)) continue
+      const ba = h(i, 6, 7002) * Math.PI
+      const bl = 5 + h(i, 6, 7003) * 12
+      const x1 = x - Math.cos(ba) * bl / 2, y1 = y - Math.sin(ba) * bl / 2
+      const x2 = x + Math.cos(ba) * bl / 2, y2 = y + Math.sin(ba) * bl / 2
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.lineTo(x2, y2)
+      ctx.strokeStyle = `rgba(162,152,132,${(0.25 + h(i, 6, 7004) * 0.3).toFixed(2)})`
+      ctx.lineWidth = 1.5 + h(i, 6, 7005)
+      ctx.lineCap = 'round'
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.arc(x1, y1, 1.8, 0, Math.PI * 2)
+      ctx.arc(x2, y2, 1.8, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(162,152,132,${(0.2 + h(i, 6, 7004) * 0.25).toFixed(2)})`
+      ctx.fill()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.05); i++) {
+      const x = h(i, 7, 8000) * W, y = h(i, 7, 8001) * H
+      if (!isW(x, y)) continue
+      const sr = 5 + h(i, 7, 8002) * 5
+      ctx.beginPath()
+      ctx.ellipse(x, y, sr, sr * 1.15, 0, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(148,138,118,${(0.3 + h(i, 7, 8003) * 0.25).toFixed(2)})`
+      ctx.fill()
+      ctx.beginPath()
+      ctx.arc(x - sr * 0.3, y - sr * 0.15, sr * 0.22, 0, Math.PI * 2)
+      ctx.arc(x + sr * 0.3, y - sr * 0.15, sr * 0.22, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(5,5,12,0.6)'
+      ctx.fill()
+    }
+  } else if (theme === 'forest') {
+    for (let i = 0; i < Math.floor(wc * 0.12); i++) {
+      const x = h(i, 8, 3000) * W, y = h(i, 8, 3001) * H
+      if (!isW(x, y)) continue
+      const trunkR = 3 + h(i, 8, 3002) * 5
+      const canopyR = 14 + h(i, 8, 3003) * 30
+      ctx.beginPath()
+      ctx.arc(x, y, trunkR, 0, Math.PI * 2)
+      ctx.fillStyle = rgb(36, 24, 10)
+      ctx.fill()
+      ctx.beginPath()
+      ctx.arc(x - trunkR * 0.3, y - trunkR * 0.3, trunkR * 0.6, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(52,36,16,0.5)'
+      ctx.fill()
+      const nl = 6 + Math.floor(h(i, 8, 3004) * 7)
+      for (let j = 0; j < nl; j++) {
+        const lx = x + (h(i * 13 + j, 8, 3010 + j) - 0.5) * canopyR * 1.8
+        const ly = y + (h(i * 13 + j, 8, 3020 + j) - 0.5) * canopyR * 1.8
+        const lr = canopyR * (0.3 + h(i * 13 + j, 8, 3030 + j) * 0.55)
+        const green = 18 + h(i * 13 + j, 8, 3040 + j) * 42
         ctx.beginPath()
-        ctx.roundRect(bsx, bsy, bsw, bsh, 0.5)
-        ctx.fillStyle = grad
+        ctx.arc(lx, ly, lr, 0, Math.PI * 2)
+        const lg = ctx.createRadialGradient(lx - lr * 0.2, ly - lr * 0.2, 0, lx, ly, lr)
+        lg.addColorStop(0, rgba(5 + green * 0.2, green + 10, 3, 0.55))
+        lg.addColorStop(0.6, rgba(3 + green * 0.15, green - 5, 2, 0.42))
+        lg.addColorStop(1, rgba(2 + green * 0.1, green - 14, 1, 0.25))
+        ctx.fillStyle = lg
         ctx.fill()
       }
-      bx += bw
     }
-    cy += ch
+    for (let i = 0; i < Math.floor(wc * 0.5); i++) {
+      const x = h(i, 9, 5000) * W, y = h(i, 9, 5001) * H
+      if (!isW(x, y)) continue
+      const gh = 4 + h(i, 9, 5002) * 10
+      const lean = (h(i, 9, 5003) - 0.5) * 6
+      const green = 38 + Math.floor(h(i, 9, 5004) * 55)
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+      ctx.quadraticCurveTo(x + lean * 0.6, y - gh * 0.6, x + lean, y - gh)
+      ctx.strokeStyle = `rgba(18,${green},8,0.5)`
+      ctx.lineWidth = 0.8 + h(i, 9, 5005) * 0.7
+      ctx.stroke()
+    }
+  } else if (theme === 'infernal') {
+    const nf = 4 + Math.floor(h(0, 10, 9999) * 6)
+    for (let i = 0; i < nf; i++) {
+      const x1 = h(i, 10, 3000) * W, y1 = h(i, 10, 3001) * H
+      const x2 = h(i, 10, 3002) * W, y2 = h(i, 10, 3003) * H
+      const cx = h(i, 10, 3004) * W, cy = h(i, 10, 3005) * H
+      ctx.lineCap = 'round'
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.quadraticCurveTo(cx, cy, x2, y2)
+      ctx.strokeStyle = 'rgba(255,95,8,0.14)'
+      ctx.lineWidth = 14 + h(i, 10, 3006) * 12
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.quadraticCurveTo(cx, cy, x2, y2)
+      ctx.strokeStyle = 'rgba(255,135,18,0.35)'
+      ctx.lineWidth = 5 + h(i, 10, 3007) * 5
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.quadraticCurveTo(cx, cy, x2, y2)
+      ctx.strokeStyle = `rgba(255,${175 + Math.floor(h(i, 10, 3008) * 65)},55,0.7)`
+      ctx.lineWidth = 1.5 + h(i, 10, 3009) * 2
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.quadraticCurveTo(cx, cy, x2, y2)
+      ctx.strokeStyle = 'rgba(255,245,190,0.35)'
+      ctx.lineWidth = 0.5
+      ctx.stroke()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.08); i++) {
+      const x = h(i, 11, 4000) * W, y = h(i, 11, 4001) * H
+      if (!isW(x, y)) continue
+      const r = 10 + h(i, 11, 4002) * 28
+      ctx.beginPath()
+      ctx.ellipse(x, y, r, r * (0.45 + h(i, 11, 4003) * 0.55), h(i, 11, 4004) * Math.PI, 0, Math.PI * 2)
+      const pg = ctx.createRadialGradient(x, y, 0, x, y, r)
+      pg.addColorStop(0, 'rgba(255,225,75,0.6)')
+      pg.addColorStop(0.3, 'rgba(255,130,18,0.48)')
+      pg.addColorStop(0.6, 'rgba(215,50,5,0.3)')
+      pg.addColorStop(1, 'rgba(90,12,2,0)')
+      ctx.fillStyle = pg
+      ctx.fill()
+    }
+    for (let i = 0; i < Math.floor(wc * 0.4); i++) {
+      const x = h(i, 12, 5000) * W, y = h(i, 12, 5001) * H
+      if (!isW(x, y)) continue
+      const r = 0.5 + h(i, 12, 5002) * 2.8
+      ctx.beginPath()
+      ctx.arc(x, y, r, 0, Math.PI * 2)
+      const eg = ctx.createRadialGradient(x, y, 0, x, y, r)
+      eg.addColorStop(0, 'rgba(255,225,75,0.75)')
+      eg.addColorStop(0.5, 'rgba(255,108,12,0.4)')
+      eg.addColorStop(1, 'rgba(175,28,4,0)')
+      ctx.fillStyle = eg
+      ctx.fill()
+    }
   }
 
-  if (floorBelow) {
-    const grad = ctx.createLinearGradient(px, py + S - 7, px, py + S)
-    grad.addColorStop(0, 'rgba(0,0,0,0)')
-    grad.addColorStop(0.3, rgba(t.wall.mortar[0], t.wall.mortar[1], t.wall.mortar[2], 0.5))
-    grad.addColorStop(1, rgba(t.wall.mortar[0] - 5, t.wall.mortar[1] - 5, t.wall.mortar[2] - 5, 0.9))
-    ctx.fillStyle = grad
-    ctx.fillRect(px, py + S - 7, S, 7)
-
-    ctx.fillStyle = rgba(t.wall.top[0], t.wall.top[1], t.wall.top[2], 0.3)
-    ctx.fillRect(px, py + S - 7, S, 1.5)
-  }
-
-  if (floorAbove) {
-    ctx.fillStyle = rgba(t.wall.top[0], t.wall.top[1], t.wall.top[2], 0.25)
-    ctx.fillRect(px, py, S, 1.5)
-  }
+  ctx.restore()
 }
 
 function drawDoorTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, gy: number) {
@@ -416,152 +562,6 @@ function drawStairsTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, 
   }
 }
 
-function drawCellDecor(ctx: CanvasRenderingContext2D, theme: MapTheme, t: ThemeDef, gx: number, gy: number, cellType: string) {
-  if (cellType !== 'floor') return
-  const px = gx * S, py = gy * S
-  const cx = px + S / 2, cy = py + S / 2
-  const r1 = h(gx, gy, 0), r2 = h(gx, gy, 1), r3 = h(gx, gy, 2), r4 = h(gx, gy, 3), r5 = h(gx, gy, 4)
-
-  if (theme === 'classic') {
-    if (r1 > 0.72) {
-      for (let i = 0; i < 3; i++) {
-        const rx = px + 3 + h(gx, gy, 110 + i) * 24
-        const ry = py + 3 + h(gx, gy, 120 + i) * 24
-        ctx.fillStyle = rgba(t.floor.mortar[0] + 10, t.floor.mortar[1] + 10, t.floor.mortar[2] + 10, 0.35)
-        ctx.fillRect(rx, ry, 2 + h(gx, gy, 130 + i) * 2, 1.5 + h(gx, gy, 140 + i))
-      }
-    }
-    if (r3 > 0.88) {
-      ctx.beginPath()
-      ctx.moveTo(px + 2 + r1 * 4, py + 2 + r2 * 4)
-      ctx.quadraticCurveTo(px + 8 + r2 * 8, py + 1 + r3 * 3, px + 14 + r1 * 10, py + 3 + r4 * 5)
-      ctx.quadraticCurveTo(px + 10 + r3 * 6, py + 6 + r1 * 4, px + 4 + r4 * 6, py + 8 + r2 * 5)
-      ctx.strokeStyle = 'rgba(140,130,120,0.12)'
-      ctx.lineWidth = 0.4
-      ctx.stroke()
-    }
-    if (r5 > 0.88) {
-      ctx.fillStyle = 'rgba(200,180,110,0.3)'
-      ctx.fillRect(cx - 1 + r1 * 4, cy - 1 + r2 * 3, 1.4, 4)
-      ctx.beginPath()
-      ctx.arc(cx + r1 * 4, cy - 2.5 + r2 * 3, 1.8, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(255,170,50,0.1)'
-      ctx.fill()
-      ctx.beginPath()
-      ctx.arc(cx + r1 * 4, cy - 2.5 + r2 * 3, 0.6, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(255,230,130,0.4)'
-      ctx.fill()
-    }
-  } else if (theme === 'cave') {
-    if (r1 > 0.65) {
-      ctx.beginPath()
-      ctx.moveTo(cx - 2 + r2 * 8, cy + 6)
-      ctx.lineTo(cx - 4 + r2 * 8, cy - 4 + r3 * 3)
-      ctx.lineTo(cx + r2 * 8, cy + 6)
-      ctx.closePath()
-      ctx.fillStyle = rgba(t.floor.base[0] + 15, t.floor.base[1] + 10, t.floor.base[2] + 5, 0.35)
-      ctx.fill()
-    }
-    if (r3 > 0.7) {
-      const mx = cx - 5 + r1 * 10, my = cy - 3 + r2 * 6
-      ctx.beginPath()
-      ctx.ellipse(mx, my, 2.5 + r4, 2, r2 * Math.PI, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(80,140,55,0.3)'
-      ctx.fill()
-      ctx.beginPath()
-      ctx.moveTo(mx, my + 2)
-      ctx.lineTo(mx, my + 5)
-      ctx.strokeStyle = 'rgba(60,100,35,0.3)'
-      ctx.lineWidth = 0.7
-      ctx.stroke()
-    }
-    if (r5 > 0.8) {
-      ctx.beginPath()
-      ctx.moveTo(px + 3 + r1 * 20, py + 1)
-      ctx.lineTo(px + 3 + r1 * 20 + r2 * 2, py + 5 + r3 * 4)
-      ctx.strokeStyle = 'rgba(80,140,160,0.2)'
-      ctx.lineWidth = 0.5
-      ctx.stroke()
-      ctx.beginPath()
-      ctx.arc(px + 3 + r1 * 20 + r2 * 2, py + 6 + r3 * 4, 0.7, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(80,140,160,0.2)'
-      ctx.fill()
-    }
-  } else if (theme === 'crypt') {
-    if (r1 > 0.8) {
-      const sx = cx - 3 + r2 * 6, sy = cy - 2 + r3 * 4
-      ctx.beginPath()
-      ctx.arc(sx, sy, 2.5, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(120,115,105,0.2)'
-      ctx.fill()
-      ctx.beginPath()
-      ctx.arc(sx - 1, sy - 0.8, 0.5, 0, Math.PI * 2)
-      ctx.arc(sx + 1, sy - 0.8, 0.5, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(10,10,20,0.35)'
-      ctx.fill()
-    }
-    if (r4 > 0.82) {
-      ctx.fillStyle = 'rgba(200,185,110,0.3)'
-      ctx.fillRect(cx + 3 - r1 * 8, cy - 1 + r2 * 4, 1.2, 3.5)
-      ctx.beginPath()
-      ctx.arc(cx + 3 - r1 * 8 + 0.6, cy - 2 + r2 * 4, 1.5, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(255,170,50,0.08)'
-      ctx.fill()
-      ctx.beginPath()
-      ctx.arc(cx + 3 - r1 * 8 + 0.6, cy - 2 + r2 * 4, 0.5, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(255,230,130,0.35)'
-      ctx.fill()
-    }
-  } else if (theme === 'forest') {
-    if (r1 > 0.2) {
-      for (let i = 0; i < 3; i++) {
-        const bx = cx - 6 + r2 * 12, by = cy + 5
-        const angle = (i - 1) * 0.3 + (r3 - 0.5) * 0.4
-        ctx.beginPath()
-        ctx.moveTo(bx, by)
-        ctx.lineTo(bx + Math.sin(angle) * (5 + r4 * 3), by - 5 - r3 * 3)
-        ctx.strokeStyle = `rgba(${60 + i * 10},${120 + i * 15},${30 + i * 5},0.4)`
-        ctx.lineWidth = 0.6
-        ctx.stroke()
-      }
-    }
-    if (r3 > 0.8) {
-      ctx.beginPath()
-      ctx.arc(cx + 3 - r1 * 6, cy - 3 + r2 * 4, 1.5, 0, Math.PI * 2)
-      ctx.fillStyle = r4 > 0.5 ? 'rgba(215,160,210,0.35)' : 'rgba(210,210,70,0.35)'
-      ctx.fill()
-    }
-    if (r4 > 0.6) {
-      ctx.beginPath()
-      ctx.ellipse(cx - 3 + r1 * 6, cy - 4 + r2 * 8, 2.5, 1, r3 * Math.PI, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(120,85,30,0.2)'
-      ctx.fill()
-    }
-  } else if (theme === 'infernal') {
-    if (r1 > 0.3) {
-      ctx.beginPath()
-      ctx.moveTo(cx - 8 + r2 * 16, cy - 4 + r3 * 4)
-      ctx.lineTo(cx - 4 + r2 * 16 + r4 * 4, cy - 2 + r3 * 4 + r1 * 3)
-      ctx.lineTo(cx - 6 + r2 * 16 + r4 * 4, cy + r3 * 4 + r1 * 3 + r3 * 2)
-      ctx.strokeStyle = 'rgba(255,90,30,0.25)'
-      ctx.lineWidth = 0.7
-      ctx.stroke()
-    }
-    if (r2 > 0.6) {
-      ctx.beginPath()
-      ctx.arc(cx + 4 - r3 * 8, cy - 4 + r4 * 8, 0.5 + r1 * 0.4, 0, Math.PI * 2)
-      ctx.fillStyle = `rgba(255,${120 + Math.floor(r2 * 80)},30,${0.3 + r2 * 0.2})`
-      ctx.fill()
-    }
-    if (r4 > 0.65) {
-      ctx.beginPath()
-      ctx.arc(cx - 2 + r1 * 4, cy - 3 + r2 * 6, 1.5 + r4, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(30,10,5,0.2)'
-      ctx.fill()
-    }
-  }
-}
-
 function generateNoiseTexture(w: number, ht: number): HTMLCanvasElement {
   const c = document.createElement('canvas')
   c.width = w
@@ -625,6 +625,8 @@ export default function DungeonMap({
   const noiseRef = useRef<HTMLCanvasElement | null>(null)
   const [theme, setTheme] = useState<MapTheme>('classic')
   const t = THEMES[theme]
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
 
   const getPlayerAt = useCallback((x: number, y: number) => {
     return players.find(p => p.position.x === x && p.position.y === y)
@@ -713,19 +715,17 @@ export default function DungeonMap({
 
         switch (cell.type) {
           case 'floor': drawFloorTile(ctx, t, x, y); break
-          case 'wall': drawWallTile(ctx, t, x, y, isFloorAt(x, y + 1), isFloorAt(x, y - 1)); break
+          case 'wall': drawWallTile(ctx, t, x, y, theme); break
           case 'door': drawDoorTile(ctx, t, x, y); break
           case 'water': drawWaterTile(ctx, t, x, y); break
           case 'stairs': drawStairsTile(ctx, t, x, y); break
         }
 
-        if (show && op > 0.3) {
-          drawCellDecor(ctx, theme, t, x, y, cell.type)
-        }
-
         ctx.globalAlpha = 1
       }
     }
+
+    drawWallIllustrations(ctx, t, theme, grid, width, height)
 
     if (noiseRef.current) {
       ctx.save()
@@ -746,14 +746,14 @@ export default function DungeonMap({
       }
       ctx.clip()
       ctx.globalCompositeOperation = 'overlay'
-      ctx.globalAlpha = 0.13
+      ctx.globalAlpha = 0.2
       ctx.drawImage(noiseRef.current, 0, 0)
       ctx.restore()
       ctx.globalAlpha = 1
       ctx.globalCompositeOperation = 'source-over'
     }
 
-    const sh = 14
+    const aoSize = S * 0.85
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const cell = grid[y][x]
@@ -764,42 +764,82 @@ export default function DungeonMap({
         const px = x * S, py = y * S
 
         if (isWallAt(x, y - 1)) {
-          const g = ctx.createLinearGradient(px, py, px, py + sh)
-          g.addColorStop(0, t.shadow)
+          const g = ctx.createLinearGradient(px, py, px, py + aoSize)
+          g.addColorStop(0, 'rgba(0,0,0,0.7)')
+          g.addColorStop(0.3, 'rgba(0,0,0,0.3)')
+          g.addColorStop(0.7, 'rgba(0,0,0,0.08)')
           g.addColorStop(1, 'rgba(0,0,0,0)')
           ctx.fillStyle = g
-          ctx.fillRect(px, py, S, sh)
+          ctx.fillRect(px, py, S, aoSize)
         }
         if (isWallAt(x, y + 1)) {
-          const g = ctx.createLinearGradient(px, py + S, px, py + S - sh)
-          g.addColorStop(0, t.shadow)
+          const g = ctx.createLinearGradient(px, py + S, px, py + S - aoSize)
+          g.addColorStop(0, 'rgba(0,0,0,0.7)')
+          g.addColorStop(0.3, 'rgba(0,0,0,0.3)')
+          g.addColorStop(0.7, 'rgba(0,0,0,0.08)')
           g.addColorStop(1, 'rgba(0,0,0,0)')
           ctx.fillStyle = g
-          ctx.fillRect(px, py + S - sh, S, sh)
+          ctx.fillRect(px, py + S - aoSize, S, aoSize)
         }
         if (isWallAt(x - 1, y)) {
-          const g = ctx.createLinearGradient(px, py, px + sh, py)
-          g.addColorStop(0, t.shadow)
+          const g = ctx.createLinearGradient(px, py, px + aoSize, py)
+          g.addColorStop(0, 'rgba(0,0,0,0.7)')
+          g.addColorStop(0.3, 'rgba(0,0,0,0.3)')
+          g.addColorStop(0.7, 'rgba(0,0,0,0.08)')
           g.addColorStop(1, 'rgba(0,0,0,0)')
           ctx.fillStyle = g
-          ctx.fillRect(px, py, sh, S)
+          ctx.fillRect(px, py, aoSize, S)
         }
         if (isWallAt(x + 1, y)) {
-          const g = ctx.createLinearGradient(px + S, py, px + S - sh, py)
-          g.addColorStop(0, t.shadow)
+          const g = ctx.createLinearGradient(px + S, py, px + S - aoSize, py)
+          g.addColorStop(0, 'rgba(0,0,0,0.7)')
+          g.addColorStop(0.3, 'rgba(0,0,0,0.3)')
+          g.addColorStop(0.7, 'rgba(0,0,0,0.08)')
           g.addColorStop(1, 'rgba(0,0,0,0)')
           ctx.fillStyle = g
-          ctx.fillRect(px + S - sh, py, sh, S)
+          ctx.fillRect(px + S - aoSize, py, aoSize, S)
         }
+      }
+    }
+
+    for (const room of dungeon.rooms) {
+      const rcx = (room.position.x + room.size.width / 2) * S
+      const rcy = (room.position.y + room.size.height / 2) * S
+      const roomR = Math.max(room.size.width, room.size.height) * S * 0.7
+      const rg = ctx.createRadialGradient(rcx, rcy, 0, rcx, rcy, roomR)
+      rg.addColorStop(0, 'rgba(255,210,140,0.12)')
+      rg.addColorStop(0.3, 'rgba(255,190,110,0.06)')
+      rg.addColorStop(0.7, 'rgba(255,170,90,0.02)')
+      rg.addColorStop(1, 'rgba(0,0,0,0)')
+      ctx.fillStyle = rg
+      ctx.fillRect(rcx - roomR, rcy - roomR, roomR * 2, roomR * 2)
+    }
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        if (grid[y][x].type !== 'door') continue
+        const vis = isCellVisible(dungeon, revealedRooms, players, x, y, vc)
+        if (!(vis || isDM)) continue
+        const tcx = x * S + S / 2, tcy = y * S + S / 2
+        const torchR = S * 5
+        const tg = ctx.createRadialGradient(tcx, tcy, 0, tcx, tcy, torchR)
+        tg.addColorStop(0, 'rgba(255,170,65,0.35)')
+        tg.addColorStop(0.1, 'rgba(255,150,50,0.22)')
+        tg.addColorStop(0.3, 'rgba(255,130,40,0.10)')
+        tg.addColorStop(0.6, 'rgba(255,110,30,0.03)')
+        tg.addColorStop(1, 'rgba(0,0,0,0)')
+        ctx.fillStyle = tg
+        ctx.fillRect(tcx - torchR, tcy - torchR, torchR * 2, torchR * 2)
       }
     }
 
     for (const p of players) {
       const pcx = p.position.x * S + S / 2, pcy = p.position.y * S + S / 2
-      const glowR = S * 2.5
+      const glowR = S * 5
       const grd = ctx.createRadialGradient(pcx, pcy, 0, pcx, pcy, glowR)
-      grd.addColorStop(0, 'rgba(255,220,150,0.06)')
-      grd.addColorStop(0.4, 'rgba(255,200,120,0.03)')
+      grd.addColorStop(0, 'rgba(255,215,140,0.25)')
+      grd.addColorStop(0.15, 'rgba(255,195,110,0.14)')
+      grd.addColorStop(0.4, 'rgba(255,175,90,0.05)')
       grd.addColorStop(1, 'rgba(0,0,0,0)')
       ctx.fillStyle = grd
       ctx.fillRect(pcx - glowR, pcy - glowR, glowR * 2, glowR * 2)
@@ -813,32 +853,57 @@ export default function DungeonMap({
           const exp = exploredCells.has(`${x},${y}`)
           const walkable = cell.type !== 'wall' && cell.type !== 'empty'
           if (!vis && exp && walkable) {
-            ctx.fillStyle = 'rgba(15,20,40,0.15)'
+            ctx.fillStyle = 'rgba(10,12,25,0.3)'
             ctx.fillRect(x * S, y * S, S, S)
           }
         }
       }
     }
-  }, [grid, width, height, theme, t, revealedRooms, players, visionDistanceFt, exploredCells, isDM, dungeon, isFloorAt, isWallAt])
+  }, [grid, width, height, theme, t, revealedRooms, players, visionDistanceFt, exploredCells, isDM, dungeon, isWallAt])
 
   const handleCanvasClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
-    const x = Math.floor((e.clientX - rect.left) / S)
-    const y = Math.floor((e.clientY - rect.top) / S)
+    const x = Math.floor((e.clientX - rect.left) / scale / S)
+    const y = Math.floor((e.clientY - rect.top) / scale / S)
     if (x >= 0 && x < width && y >= 0 && y < height) {
       onCellClick(x, y)
     }
-  }, [width, height, onCellClick])
+  }, [width, height, onCellClick, scale])
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+    const fit = () => {
+      const cw = container.clientWidth - 24
+      const ch = container.clientHeight - 60
+      const mapW = width * S
+      const mapH = height * S
+      if (mapW <= 0 || mapH <= 0) return
+      setScale(Math.min(1, cw / mapW, ch / mapH))
+    }
+    fit()
+    const ro = new ResizeObserver(fit)
+    ro.observe(container)
+    return () => ro.disconnect()
+  }, [width, height])
 
   const HP_R = S / 2 - 1
   const HP_C = 2 * Math.PI * HP_R
   const np = { pointerEvents: 'none' as const }
 
   return (
-    <div className="dungeon-map-container" style={{ background: `radial-gradient(ellipse at center, ${t.bg[0]} 0%, ${t.bg[1]} 100%)` }}>
+    <div ref={containerRef} className="dungeon-map-container" style={{ background: `radial-gradient(ellipse at center, ${t.bg[0]} 0%, ${t.bg[1]} 100%)` }}>
       <div
         className="dungeon-map-wrapper"
-        style={{ position: 'relative', width: width * S, height: height * S, cursor: 'pointer', flexShrink: 0 }}
+        style={{
+          position: 'relative',
+          width: width * S,
+          height: height * S,
+          cursor: 'pointer',
+          flexShrink: 0,
+          transform: `scale(${scale})`,
+          transformOrigin: 'top center',
+        }}
         onClick={handleCanvasClick}
       >
         <canvas

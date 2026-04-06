@@ -1689,11 +1689,12 @@ body {
 /* Map */
 .dungeon-map-container {
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
   padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background: radial-gradient(ellipse at center, #121225 0%, #0a0a14 100%);
   transition: background 0.4s;
 }
