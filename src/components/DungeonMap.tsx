@@ -25,7 +25,7 @@ const THEMES: Record<MapTheme, ThemeDef> = {
     shadow: 'rgba(0,0,0,0.65)', ambientTint: 'rgba(255,200,120,0.04)',
     swatch: ['#8a7d6e', '#5a5040'],
     floor: { base: [155, 140, 120], variation: 22, mortar: [82, 70, 55], crack: [58, 48, 35], moss: [65, 95, 48] },
-    wall: { base: [20, 18, 16], variation: 6, mortar: [10, 9, 8], top: [40, 35, 28], highlight: 4 },
+    wall: { base: [52, 46, 38], variation: 10, mortar: [35, 30, 24], top: [68, 60, 48], highlight: 6 },
     door: { wood: [130, 85, 42], grain: [95, 60, 28], metal: [165, 155, 135] },
     water: { deep: [15, 55, 78], surface: [50, 148, 168], highlight: [88, 198, 218] },
   },
@@ -35,7 +35,7 @@ const THEMES: Record<MapTheme, ThemeDef> = {
     shadow: 'rgba(10,5,0,0.65)', ambientTint: 'rgba(200,160,80,0.05)',
     swatch: ['#9a8568', '#6a5838'],
     floor: { base: [148, 125, 92], variation: 26, mortar: [78, 62, 42], crack: [55, 40, 25], moss: [75, 115, 45] },
-    wall: { base: [24, 20, 14], variation: 6, mortar: [12, 10, 7], top: [45, 38, 26], highlight: 4 },
+    wall: { base: [58, 48, 34], variation: 10, mortar: [38, 32, 22], top: [72, 60, 42], highlight: 6 },
     door: { wood: [125, 90, 48], grain: [92, 62, 30], metal: [155, 135, 105] },
     water: { deep: [18, 55, 42], surface: [48, 128, 92], highlight: [78, 168, 118] },
   },
@@ -45,7 +45,7 @@ const THEMES: Record<MapTheme, ThemeDef> = {
     shadow: 'rgba(0,0,10,0.65)', ambientTint: 'rgba(120,140,180,0.05)',
     swatch: ['#7a7e88', '#4a4e58'],
     floor: { base: [132, 128, 122], variation: 18, mortar: [68, 65, 60], crack: [48, 44, 38], moss: [55, 72, 55] },
-    wall: { base: [16, 16, 22], variation: 5, mortar: [9, 9, 12], top: [35, 35, 42], highlight: 3 },
+    wall: { base: [42, 42, 52], variation: 8, mortar: [28, 28, 36], top: [58, 58, 68], highlight: 5 },
     door: { wood: [72, 60, 50], grain: [52, 42, 32], metal: [115, 120, 135] },
     water: { deep: [10, 15, 35], surface: [30, 42, 72], highlight: [50, 68, 108] },
   },
@@ -55,7 +55,7 @@ const THEMES: Record<MapTheme, ThemeDef> = {
     shadow: 'rgba(0,10,0,0.6)', ambientTint: 'rgba(80,160,60,0.05)',
     swatch: ['#5e7e52', '#3e5e3c'],
     floor: { base: [118, 128, 98], variation: 24, mortar: [58, 65, 45], crack: [42, 50, 32], moss: [68, 110, 40] },
-    wall: { base: [14, 22, 12], variation: 5, mortar: [8, 12, 7], top: [38, 45, 32], highlight: 3 },
+    wall: { base: [32, 52, 28], variation: 8, mortar: [22, 36, 18], top: [48, 68, 42], highlight: 5 },
     door: { wood: [95, 82, 42], grain: [68, 58, 28], metal: [105, 118, 88] },
     water: { deep: [12, 32, 18], surface: [35, 75, 45], highlight: [55, 105, 62] },
   },
@@ -65,7 +65,7 @@ const THEMES: Record<MapTheme, ThemeDef> = {
     shadow: 'rgba(15,0,0,0.65)', ambientTint: 'rgba(255,60,20,0.06)',
     swatch: ['#8a4838', '#603020'],
     floor: { base: [142, 72, 52], variation: 22, mortar: [72, 32, 22], crack: [52, 22, 12], moss: [85, 52, 30] },
-    wall: { base: [28, 12, 8], variation: 6, mortar: [14, 7, 5], top: [48, 28, 20], highlight: 4 },
+    wall: { base: [62, 28, 18], variation: 10, mortar: [42, 18, 12], top: [82, 42, 28], highlight: 6 },
     door: { wood: [95, 48, 28], grain: [68, 32, 18], metal: [140, 118, 100] },
     water: { deep: [65, 15, 0], surface: [148, 55, 12], highlight: [218, 95, 22], lava: true },
   },
@@ -144,297 +144,556 @@ function drawFloorTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, g
     ctx.fillStyle = `rgba(255,240,200,${((0.38 - stain) * 0.15).toFixed(3)})`
     ctx.fillRect(px, py, S, S)
   }
+
+  ctx.fillStyle = rgb(t.floor.mortar[0], t.floor.mortar[1], t.floor.mortar[2])
+  ctx.globalAlpha = 0.4
+  ctx.fillRect(px, py, S, 1)
+  ctx.fillRect(px, py, 1, S)
+  ctx.globalAlpha = 1
 }
 
 function drawWallTile(ctx: CanvasRenderingContext2D, t: ThemeDef, gx: number, gy: number, _theme: MapTheme) {
   const px = gx * S, py = gy * S
-  const n = fbm(gx * 0.3, gy * 0.3, 3, 777)
-  const v = (n - 0.5) * 15
+  const n = fbm(gx * 0.15, gy * 0.15, 4, 777)
+  const v = (n - 0.5) * t.wall.variation * 2.5
   ctx.fillStyle = rgb(t.wall.base[0] + v, t.wall.base[1] + v, t.wall.base[2] + v)
   ctx.fillRect(px, py, S, S)
 }
 
-function drawWallIllustrations(ctx: CanvasRenderingContext2D, t: ThemeDef, theme: MapTheme, grid: { type: string }[][], width: number, height: number) {
+function drawWallIllustrations(ctx: CanvasRenderingContext2D, _t: ThemeDef, theme: MapTheme, grid: { type: string }[][], width: number, height: number) {
   const W = width * S, H = height * S
-  const isW = (px: number, py: number) => {
-    const gx = Math.floor(px / S), gy = Math.floor(py / S)
-    if (gx < 0 || gx >= width || gy < 0 || gy >= height) return false
-    return grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty'
-  }
-
   ctx.save()
   ctx.beginPath()
+  const wallCells: [number, number][] = []
   for (let gy = 0; gy < height; gy++)
     for (let gx = 0; gx < width; gx++)
-      if (grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty')
+      if (grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty') {
         ctx.rect(gx * S, gy * S, S, S)
+        wallCells.push([gx, gy])
+      }
   ctx.clip()
+  if (wallCells.length === 0) { ctx.restore(); return }
 
-  let wc = 0
-  for (let gy = 0; gy < height; gy++)
-    for (let gx = 0; gx < width; gx++)
-      if (grid[gy][gx].type === 'wall' || grid[gy][gx].type === 'empty') wc++
+  const n = width * height
+  const mh = (i: number, s: number): number => {
+    let v = (i * 2654435761 + s * 284812377) | 0
+    v = Math.imul(v ^ (v >>> 16), 0x85ebca6b)
+    v = Math.imul(v ^ (v >>> 13), 0xc2b2ae35)
+    return ((v ^ (v >>> 16)) >>> 0) / 4294967295
+  }
+  const rp = (i: number, s: number): [number, number] => [mh(i, s) * W, mh(i, s + 5000) * H]
 
   if (theme === 'classic') {
-    for (let i = 0; i < Math.floor(wc * 0.35); i++) {
-      const x = h(i, 0, 3000) * W, y = h(i, 0, 3001) * H
-      if (!isW(x, y)) continue
-      const r = 6 + h(i, 0, 3002) * 22
-      const aspect = 0.5 + h(i, 0, 3004) * 0.5
-      const shade = 18 + h(i, 0, 3003) * 35
+    for (let i = 0; i < n * 0.25; i++) {
+      const [rx, ry] = rp(i, 10)
+      const r = 6 + h(i, 0, 3030) * 24
+      const aspect = 0.4 + h(i, 0, 3040) * 0.6
+      const shade = 60 + h(i, 0, 3050) * 60
       ctx.beginPath()
-      ctx.ellipse(x, y, r, r * aspect, h(i, 0, 3005) * Math.PI, 0, Math.PI * 2)
-      const g = ctx.createRadialGradient(x - r * 0.25, y - r * aspect * 0.25, 0, x, y, r)
-      g.addColorStop(0, rgb(shade + 28, shade + 22, shade + 14))
-      g.addColorStop(0.5, rgb(shade + 5, shade, shade - 5))
-      g.addColorStop(1, rgb(shade - 10, shade - 15, shade - 20))
+      ctx.ellipse(rx, ry, r, r * aspect, h(i, 0, 3060) * Math.PI, 0, Math.PI * 2)
+      const g = ctx.createRadialGradient(rx - r * 0.3, ry - r * aspect * 0.3, 0, rx, ry, r)
+      g.addColorStop(0, rgb(shade + 42, shade + 34, shade + 22))
+      g.addColorStop(0.5, rgb(shade + 5, shade, shade - 8))
+      g.addColorStop(1, rgb(shade - 18, shade - 25, shade - 30))
       ctx.fillStyle = g
       ctx.fill()
     }
-    for (let i = 0; i < Math.floor(wc * 0.7); i++) {
-      const x = h(i, 1, 4000) * W, y = h(i, 1, 4001) * H
-      if (!isW(x, y)) continue
-      ctx.fillStyle = `rgba(48,42,32,${(0.25 + h(i, 1, 4003) * 0.4).toFixed(2)})`
+    for (let i = 0; i < n * 0.06; i++) {
+      const [rx, ry] = rp(i, 20)
+      const bw = 12 + h(i, 0, 4010) * 20
+      const bh = 6 + h(i, 0, 4020) * 12
       ctx.beginPath()
-      ctx.arc(x, y, 1 + h(i, 1, 4002) * 3.5, 0, Math.PI * 2)
+      ctx.roundRect(rx - bw / 2, ry - bh / 2, bw, bh, 2)
+      const shade = 55 + h(i, 0, 4030) * 50
+      ctx.fillStyle = rgb(shade + 10, shade + 5, shade - 5)
       ctx.fill()
+      ctx.strokeStyle = `rgba(${shade + 35},${shade + 28},${shade + 15},0.4)`
+      ctx.lineWidth = 0.8
+      ctx.stroke()
+    }
+    for (let i = 0; i < n * 0.03; i++) {
+      const [rx, ry] = rp(i, 30)
+      const w = 3 + h(i, 0, 5010) * 6
+      const hgt = 8 + h(i, 0, 5020) * 16
+      ctx.fillStyle = rgb(62, 55, 42)
+      ctx.fillRect(rx - w / 2, ry - hgt, w, hgt)
+      ctx.fillStyle = 'rgba(85,75,58,0.6)'
+      ctx.fillRect(rx - w / 2, ry - hgt, w, 2)
+    }
+    for (let i = 0; i < n * 0.8; i++) {
+      const dx = mh(i, 4000) * W, dy = mh(i, 4001) * H
+      ctx.beginPath()
+      ctx.arc(dx, dy, 1 + h(i, 1, 4002) * 3, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(95,82,62,${(0.3 + h(i, 1, 4003) * 0.5).toFixed(2)})`
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.04; i++) {
+      const [rx, ry] = rp(i, 40)
+      const len = 8 + h(i, 0, 6010) * 18
+      const a = h(i, 0, 6020) * Math.PI * 2
+      ctx.beginPath()
+      ctx.moveTo(rx, ry)
+      ctx.lineTo(rx + Math.cos(a) * len, ry + Math.sin(a) * len)
+      ctx.strokeStyle = `rgba(35,30,22,${(0.3 + h(i, 0, 6030) * 0.4).toFixed(2)})`
+      ctx.lineWidth = 0.8
+      ctx.stroke()
     }
   } else if (theme === 'cave') {
-    for (let i = 0; i < Math.floor(wc * 0.18); i++) {
-      const x = h(i, 2, 3000) * W, y = h(i, 2, 3001) * H
-      if (!isW(x, y)) continue
-      const r = 12 + h(i, 2, 3002) * 35
-      const aspect = 0.5 + h(i, 2, 3004) * 0.5
-      const shade = 22 + h(i, 2, 3003) * 38
+    for (let i = 0; i < n * 0.18; i++) {
+      const [rx, ry] = rp(i, 10)
+      const r = 10 + h(i, 2, 3030) * 42
+      const aspect = 0.35 + h(i, 2, 3040) * 0.65
+      const shade = 68 + h(i, 2, 3050) * 52
       ctx.beginPath()
-      ctx.ellipse(x, y, r, r * aspect, h(i, 2, 3005) * Math.PI, 0, Math.PI * 2)
-      const g = ctx.createRadialGradient(x - r * 0.3, y - r * aspect * 0.3, 0, x, y, r)
-      g.addColorStop(0, rgb(shade + 25, shade + 18, shade + 8))
-      g.addColorStop(0.5, rgb(shade, shade - 5, shade - 14))
-      g.addColorStop(1, rgb(shade - 14, shade - 20, shade - 26))
+      ctx.ellipse(rx, ry, r, r * aspect, h(i, 2, 3060) * Math.PI, 0, Math.PI * 2)
+      const g = ctx.createRadialGradient(rx - r * 0.3, ry - r * aspect * 0.3, 0, rx, ry, r)
+      g.addColorStop(0, rgb(shade + 35, shade + 25, shade + 12))
+      g.addColorStop(0.5, rgb(shade, shade - 8, shade - 18))
+      g.addColorStop(1, rgb(shade - 22, shade - 30, shade - 38))
       ctx.fillStyle = g
       ctx.fill()
     }
-    for (let i = 0; i < Math.floor(wc * 0.15); i++) {
-      const x = h(i, 3, 5000) * W, y = h(i, 3, 5001) * H
-      if (!isW(x, y)) continue
-      const bw = 5 + h(i, 3, 5002) * 10
-      const bh = 14 + h(i, 3, 5003) * 32
-      const lean = (h(i, 3, 5004) - 0.5) * 6
+    for (let i = 0; i < n * 0.08; i++) {
+      const [sx, sy] = rp(i, 20)
+      const bw = 6 + h(i, 3, 5003) * 12
+      const bh = 18 + h(i, 3, 5004) * 40
+      const lean = (h(i, 3, 5005) - 0.5) * 8
+      const up = h(i, 3, 5006) > 0.5
       ctx.beginPath()
-      ctx.moveTo(x - bw / 2, y)
-      ctx.lineTo(x + lean, y - bh)
-      ctx.lineTo(x + bw / 2, y)
+      if (up) {
+        ctx.moveTo(sx - bw / 2, sy + bh / 2)
+        ctx.lineTo(sx + lean, sy - bh / 2)
+        ctx.lineTo(sx + bw / 2, sy + bh / 2)
+      } else {
+        ctx.moveTo(sx - bw / 2, sy - bh / 2)
+        ctx.lineTo(sx + lean, sy + bh / 2)
+        ctx.lineTo(sx + bw / 2, sy - bh / 2)
+      }
       ctx.closePath()
-      const sg = ctx.createLinearGradient(x - bw / 2, y, x + lean, y - bh)
-      sg.addColorStop(0, rgb(50, 42, 28))
-      sg.addColorStop(0.5, rgb(44, 36, 24))
-      sg.addColorStop(1, rgb(58, 50, 36))
+      const sg = ctx.createLinearGradient(sx, sy - bh / 2, sx, sy + bh / 2)
+      sg.addColorStop(0, rgb(95, 82, 60))
+      sg.addColorStop(0.5, rgb(82, 68, 50))
+      sg.addColorStop(1, rgb(105, 92, 68))
       ctx.fillStyle = sg
       ctx.fill()
-      ctx.beginPath()
-      ctx.moveTo(x + lean, y - bh)
-      ctx.lineTo(x + bw / 2, y)
-      ctx.strokeStyle = 'rgba(72,64,48,0.5)'
-      ctx.lineWidth = 0.8
+      ctx.strokeStyle = 'rgba(120,105,80,0.5)'
+      ctx.lineWidth = 1
       ctx.stroke()
+    }
+    for (let i = 0; i < n * 0.03; i++) {
+      const [mx, my] = rp(i, 30)
+      const mr = 4 + h(i, 4, 7000) * 8
+      ctx.beginPath()
+      ctx.ellipse(mx, my, mr, mr * 0.6, 0, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(72,82,55,${(0.3 + h(i, 4, 7001) * 0.35).toFixed(2)})`
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.025; i++) {
+      const [dx, dy] = rp(i, 40)
+      const r = 3 + h(i, 4, 8000) * 5
+      ctx.beginPath()
+      ctx.arc(dx, dy, r, 0, Math.PI * 2)
+      const wg = ctx.createRadialGradient(dx, dy, 0, dx, dy, r)
+      wg.addColorStop(0, 'rgba(60,80,95,0.6)')
+      wg.addColorStop(0.6, 'rgba(45,65,78,0.35)')
+      wg.addColorStop(1, 'rgba(35,50,62,0)')
+      ctx.fillStyle = wg
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.8; i++) {
+      const dx = mh(i, 6000) * W, dy = mh(i, 6001) * H
+      ctx.beginPath()
+      ctx.arc(dx, dy, 1.2 + h(i, 5, 6002) * 2.5, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(100,85,62,${(0.3 + h(i, 5, 6003) * 0.4).toFixed(2)})`
+      ctx.fill()
     }
   } else if (theme === 'crypt') {
-    for (let i = 0; i < Math.floor(wc * 0.1); i++) {
-      const x = h(i, 4, 3000) * W, y = h(i, 4, 3001) * H
-      if (!isW(x, y)) continue
-      const tw = 10 + h(i, 4, 3002) * 14
-      const th = 20 + h(i, 4, 3003) * 28
-      const shade = 28 + h(i, 4, 3004) * 20
-      ctx.fillStyle = rgb(shade, shade, shade + 7)
+    for (let i = 0; i < n * 0.05; i++) {
+      const [tx, ty] = rp(i, 10)
+      const tw = 12 + h(i, 6, 3003) * 14
+      const th = 22 + h(i, 6, 3004) * 26
+      const shade = 72 + h(i, 6, 3005) * 45
+      ctx.fillStyle = rgb(shade, shade, shade + 12)
       ctx.beginPath()
-      ctx.roundRect(x - tw / 2, y - th + tw / 2, tw, th - tw / 2, [0, 0, 2, 2])
+      ctx.roundRect(tx - tw / 2, ty, tw, th, [5, 5, 1, 1])
       ctx.fill()
       ctx.beginPath()
-      ctx.arc(x, y - th + tw / 2, tw / 2, Math.PI, 0)
+      ctx.arc(tx, ty, tw / 2, Math.PI, 0)
       ctx.fill()
-      ctx.strokeStyle = `rgba(${shade + 28},${shade + 28},${shade + 35},0.5)`
-      ctx.lineWidth = 1
-      ctx.beginPath()
-      ctx.moveTo(x, y - th * 0.72)
-      ctx.lineTo(x, y - th * 0.22)
-      ctx.moveTo(x - tw * 0.28, y - th * 0.52)
-      ctx.lineTo(x + tw * 0.28, y - th * 0.52)
-      ctx.stroke()
-      ctx.fillStyle = 'rgba(0,0,0,0.12)'
-      ctx.beginPath()
-      ctx.ellipse(x, y + 3, tw * 0.7, 4, 0, 0, Math.PI * 2)
-      ctx.fill()
-    }
-    for (let i = 0; i < Math.floor(wc * 0.05); i++) {
-      const x = h(i, 5, 6000) * W, y = h(i, 5, 6001) * H
-      if (!isW(x, y)) continue
-      const cw = 12 + h(i, 5, 6002) * 10
-      const ch = 28 + h(i, 5, 6003) * 26
-      const angle = (h(i, 5, 6004) - 0.5) * 0.7
-      ctx.save()
-      ctx.translate(x, y)
-      ctx.rotate(angle)
-      const hw = cw / 2, hh = ch / 2
-      ctx.beginPath()
-      ctx.moveTo(-hw * 0.55, -hh)
-      ctx.lineTo(hw * 0.55, -hh)
-      ctx.lineTo(hw, -hh * 0.6)
-      ctx.lineTo(hw, hh * 0.7)
-      ctx.lineTo(hw * 0.55, hh)
-      ctx.lineTo(-hw * 0.55, hh)
-      ctx.lineTo(-hw, hh * 0.7)
-      ctx.lineTo(-hw, -hh * 0.6)
-      ctx.closePath()
-      ctx.fillStyle = rgb(32, 22, 15)
-      ctx.fill()
-      ctx.strokeStyle = 'rgba(52,38,28,0.6)'
-      ctx.lineWidth = 0.8
-      ctx.stroke()
-      ctx.strokeStyle = 'rgba(65,50,38,0.4)'
+      ctx.strokeStyle = `rgba(${shade + 35},${shade + 35},${shade + 42},0.7)`
       ctx.lineWidth = 1.2
       ctx.beginPath()
-      ctx.moveTo(0, -hh * 0.5)
-      ctx.lineTo(0, hh * 0.4)
-      ctx.moveTo(-hw * 0.3, -hh * 0.2)
-      ctx.lineTo(hw * 0.3, -hh * 0.2)
+      ctx.moveTo(tx, ty - tw * 0.2)
+      ctx.lineTo(tx, ty + th * 0.7)
+      ctx.moveTo(tx - tw * 0.3, ty + th * 0.3)
+      ctx.lineTo(tx + tw * 0.3, ty + th * 0.3)
+      ctx.stroke()
+      ctx.fillStyle = 'rgba(0,0,0,0.15)'
+      ctx.beginPath()
+      ctx.ellipse(tx, ty + th + 3, tw * 0.8, 4, 0, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.025; i++) {
+      const [cx, cy] = rp(i, 20)
+      const cw = 16 + h(i, 7, 6003) * 12
+      const ch = 34 + h(i, 7, 6004) * 26
+      const angle = (h(i, 7, 6005) - 0.5) * 1.0
+      ctx.save()
+      ctx.translate(cx, cy)
+      ctx.rotate(angle)
+      ctx.beginPath()
+      ctx.moveTo(-cw * 0.3, -ch / 2)
+      ctx.lineTo(cw * 0.3, -ch / 2)
+      ctx.lineTo(cw / 2, -ch * 0.25)
+      ctx.lineTo(cw / 2, ch * 0.35)
+      ctx.lineTo(cw * 0.3, ch / 2)
+      ctx.lineTo(-cw * 0.3, ch / 2)
+      ctx.lineTo(-cw / 2, ch * 0.35)
+      ctx.lineTo(-cw / 2, -ch * 0.25)
+      ctx.closePath()
+      ctx.fillStyle = rgb(60, 42, 28)
+      ctx.fill()
+      ctx.strokeStyle = 'rgba(90,70,52,0.7)'
+      ctx.lineWidth = 1.2
+      ctx.stroke()
+      ctx.strokeStyle = 'rgba(48,35,24,0.5)'
+      ctx.lineWidth = 1.5
+      ctx.beginPath()
+      ctx.moveTo(0, -ch * 0.3)
+      ctx.lineTo(0, ch * 0.3)
+      ctx.moveTo(-cw * 0.22, 0)
+      ctx.lineTo(cw * 0.22, 0)
       ctx.stroke()
       ctx.restore()
     }
-    for (let i = 0; i < Math.floor(wc * 0.3); i++) {
-      const x = h(i, 6, 7000) * W, y = h(i, 6, 7001) * H
-      if (!isW(x, y)) continue
-      const ba = h(i, 6, 7002) * Math.PI
-      const bl = 5 + h(i, 6, 7003) * 12
-      const x1 = x - Math.cos(ba) * bl / 2, y1 = y - Math.sin(ba) * bl / 2
-      const x2 = x + Math.cos(ba) * bl / 2, y2 = y + Math.sin(ba) * bl / 2
+    for (let i = 0; i < n * 0.02; i++) {
+      const [fx, fy] = rp(i, 50)
+      const fw = 14 + h(i, 7, 9000) * 10
+      const fh = 18 + h(i, 7, 9001) * 14
       ctx.beginPath()
-      ctx.moveTo(x1, y1)
-      ctx.lineTo(x2, y2)
-      ctx.strokeStyle = `rgba(162,152,132,${(0.25 + h(i, 6, 7004) * 0.3).toFixed(2)})`
-      ctx.lineWidth = 1.5 + h(i, 6, 7005)
+      ctx.roundRect(fx - fw / 2, fy - fh / 2, fw, fh, 3)
+      ctx.fillStyle = rgb(42, 38, 48)
+      ctx.fill()
+      ctx.strokeStyle = 'rgba(62,58,72,0.6)'
+      ctx.lineWidth = 1
+      ctx.stroke()
+      ctx.fillStyle = 'rgba(80,120,180,0.25)'
+      ctx.beginPath()
+      ctx.arc(fx, fy, 3, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.6; i++) {
+      const bx = mh(i, 7000) * W, by = mh(i, 7001) * H
+      const ba = h(i, 8, 7002) * Math.PI
+      const bl = 5 + h(i, 8, 7003) * 14
+      ctx.beginPath()
+      ctx.moveTo(bx - Math.cos(ba) * bl / 2, by - Math.sin(ba) * bl / 2)
+      ctx.lineTo(bx + Math.cos(ba) * bl / 2, by + Math.sin(ba) * bl / 2)
+      ctx.strokeStyle = `rgba(195,185,165,${(0.3 + h(i, 8, 7004) * 0.4).toFixed(2)})`
+      ctx.lineWidth = 2
       ctx.lineCap = 'round'
       ctx.stroke()
-      ctx.beginPath()
-      ctx.arc(x1, y1, 1.8, 0, Math.PI * 2)
-      ctx.arc(x2, y2, 1.8, 0, Math.PI * 2)
-      ctx.fillStyle = `rgba(162,152,132,${(0.2 + h(i, 6, 7004) * 0.25).toFixed(2)})`
-      ctx.fill()
     }
-    for (let i = 0; i < Math.floor(wc * 0.05); i++) {
-      const x = h(i, 7, 8000) * W, y = h(i, 7, 8001) * H
-      if (!isW(x, y)) continue
-      const sr = 5 + h(i, 7, 8002) * 5
+    for (let i = 0; i < n * 0.04; i++) {
+      const [sx, sy] = rp(i, 30)
+      const sr = 4 + h(i, 9, 8003) * 6
       ctx.beginPath()
-      ctx.ellipse(x, y, sr, sr * 1.15, 0, 0, Math.PI * 2)
-      ctx.fillStyle = `rgba(148,138,118,${(0.3 + h(i, 7, 8003) * 0.25).toFixed(2)})`
+      ctx.ellipse(sx, sy, sr, sr * 1.2, 0, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(185,175,155,0.6)'
       ctx.fill()
       ctx.beginPath()
-      ctx.arc(x - sr * 0.3, y - sr * 0.15, sr * 0.22, 0, Math.PI * 2)
-      ctx.arc(x + sr * 0.3, y - sr * 0.15, sr * 0.22, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(5,5,12,0.6)'
+      ctx.arc(sx - sr * 0.28, sy - sr * 0.1, sr * 0.22, 0, Math.PI * 2)
+      ctx.arc(sx + sr * 0.28, sy - sr * 0.1, sr * 0.22, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(10,10,18,0.75)'
       ctx.fill()
+      ctx.beginPath()
+      ctx.moveTo(sx - sr * 0.15, sy + sr * 0.35)
+      ctx.lineTo(sx, sy + sr * 0.25)
+      ctx.lineTo(sx + sr * 0.15, sy + sr * 0.35)
+      ctx.strokeStyle = 'rgba(10,10,18,0.5)'
+      ctx.lineWidth = 0.8
+      ctx.stroke()
+    }
+    for (let i = 0; i < n * 0.05; i++) {
+      const [wx, wy] = rp(i, 60)
+      const wr = 6 + h(i, 9, 9100) * 10
+      ctx.beginPath()
+      ctx.arc(wx, wy, wr, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(18,22,32,${(0.15 + h(i, 9, 9101) * 0.2).toFixed(2)})`
+      ctx.fill()
+      for (let j = 0; j < 3; j++) {
+        const sa = h(i * 5 + j, 9, 9110 + j) * Math.PI * 2
+        const sl = wr * (0.5 + h(i * 5 + j, 9, 9120 + j) * 0.8)
+        ctx.beginPath()
+        ctx.moveTo(wx, wy)
+        ctx.lineTo(wx + Math.cos(sa) * sl, wy + Math.sin(sa) * sl)
+        ctx.strokeStyle = 'rgba(22,28,42,0.25)'
+        ctx.lineWidth = 2
+        ctx.stroke()
+      }
     }
   } else if (theme === 'forest') {
-    for (let i = 0; i < Math.floor(wc * 0.12); i++) {
-      const x = h(i, 8, 3000) * W, y = h(i, 8, 3001) * H
-      if (!isW(x, y)) continue
-      const trunkR = 3 + h(i, 8, 3002) * 5
-      const canopyR = 14 + h(i, 8, 3003) * 30
+    for (let i = 0; i < n * 0.12; i++) {
+      const [tx, ty] = rp(i, 10)
+      const trunkR = 3 + h(i, 10, 3003) * 7
+      const trunkH = 10 + h(i, 10, 3004) * 20
+      ctx.fillStyle = rgb(65, 42, 22)
       ctx.beginPath()
-      ctx.arc(x, y, trunkR, 0, Math.PI * 2)
-      ctx.fillStyle = rgb(36, 24, 10)
+      ctx.moveTo(tx - trunkR, ty)
+      ctx.quadraticCurveTo(tx - trunkR - 2, ty - trunkH * 0.5, tx - trunkR * 0.6, ty - trunkH)
+      ctx.lineTo(tx + trunkR * 0.6, ty - trunkH)
+      ctx.quadraticCurveTo(tx + trunkR + 2, ty - trunkH * 0.5, tx + trunkR, ty)
+      ctx.closePath()
       ctx.fill()
-      ctx.beginPath()
-      ctx.arc(x - trunkR * 0.3, y - trunkR * 0.3, trunkR * 0.6, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(52,36,16,0.5)'
-      ctx.fill()
-      const nl = 6 + Math.floor(h(i, 8, 3004) * 7)
+      ctx.strokeStyle = 'rgba(45,28,12,0.6)'
+      ctx.lineWidth = 1
+      ctx.stroke()
+      for (let k = 0; k < 3; k++) {
+        const ly = ty - trunkH * (0.2 + k * 0.25)
+        ctx.beginPath()
+        ctx.moveTo(tx - trunkR * 0.5, ly)
+        ctx.quadraticCurveTo(tx, ly + 2, tx + trunkR * 0.5, ly)
+        ctx.strokeStyle = 'rgba(45,28,12,0.35)'
+        ctx.lineWidth = 0.7
+        ctx.stroke()
+      }
+
+      const canopyR = 16 + h(i, 10, 3005) * 32
+      const nl = 6 + Math.floor(h(i, 10, 3006) * 8)
       for (let j = 0; j < nl; j++) {
-        const lx = x + (h(i * 13 + j, 8, 3010 + j) - 0.5) * canopyR * 1.8
-        const ly = y + (h(i * 13 + j, 8, 3020 + j) - 0.5) * canopyR * 1.8
-        const lr = canopyR * (0.3 + h(i * 13 + j, 8, 3030 + j) * 0.55)
-        const green = 18 + h(i * 13 + j, 8, 3040 + j) * 42
+        const lx = tx + (h(i * 13 + j, 10, 3010 + j) - 0.5) * canopyR * 2.4
+        const ly = (ty - trunkH) + (h(i * 13 + j, 10, 3020 + j) - 0.6) * canopyR * 2
+        const lr = canopyR * (0.28 + h(i * 13 + j, 10, 3030 + j) * 0.55)
+        const green = 55 + h(i * 13 + j, 10, 3040 + j) * 85
         ctx.beginPath()
         ctx.arc(lx, ly, lr, 0, Math.PI * 2)
-        const lg = ctx.createRadialGradient(lx - lr * 0.2, ly - lr * 0.2, 0, lx, ly, lr)
-        lg.addColorStop(0, rgba(5 + green * 0.2, green + 10, 3, 0.55))
-        lg.addColorStop(0.6, rgba(3 + green * 0.15, green - 5, 2, 0.42))
-        lg.addColorStop(1, rgba(2 + green * 0.1, green - 14, 1, 0.25))
+        const lg = ctx.createRadialGradient(lx - lr * 0.25, ly - lr * 0.25, 0, lx, ly, lr)
+        lg.addColorStop(0, rgba(20 + green * 0.12, green + 30, 12, 0.85))
+        lg.addColorStop(0.4, rgba(14 + green * 0.08, green + 8, 8, 0.6))
+        lg.addColorStop(1, rgba(8 + green * 0.05, green - 10, 4, 0.2))
         ctx.fillStyle = lg
         ctx.fill()
       }
     }
-    for (let i = 0; i < Math.floor(wc * 0.5); i++) {
-      const x = h(i, 9, 5000) * W, y = h(i, 9, 5001) * H
-      if (!isW(x, y)) continue
-      const gh = 4 + h(i, 9, 5002) * 10
-      const lean = (h(i, 9, 5003) - 0.5) * 6
-      const green = 38 + Math.floor(h(i, 9, 5004) * 55)
+    for (let i = 0; i < n * 0.06; i++) {
+      const [mx, my] = rp(i, 20)
+      const mr = 3 + h(i, 11, 4000) * 7
+      const mh = mr * (1 + h(i, 11, 4001) * 0.8)
+      const hue = h(i, 11, 4002)
+      let cr: number, cg: number, cb: number
+      if (hue < 0.3) { cr = 180; cg = 45; cb = 38 }
+      else if (hue < 0.5) { cr = 210; cg = 175; cb = 60 }
+      else if (hue < 0.7) { cr = 160; cg = 82; cb = 195 }
+      else { cr = 240; cg = 220; cb = 190 }
       ctx.beginPath()
-      ctx.moveTo(x, y)
-      ctx.quadraticCurveTo(x + lean * 0.6, y - gh * 0.6, x + lean, y - gh)
-      ctx.strokeStyle = `rgba(18,${green},8,0.5)`
-      ctx.lineWidth = 0.8 + h(i, 9, 5005) * 0.7
+      ctx.ellipse(mx, my, mr * 0.3, mr * 0.15, 0, 0, Math.PI * 2)
+      ctx.fillStyle = rgb(55, 42, 28)
+      ctx.fill()
+      ctx.beginPath()
+      ctx.moveTo(mx, my)
+      ctx.lineTo(mx, my - mh)
+      ctx.strokeStyle = rgb(165, 155, 138)
+      ctx.lineWidth = 1.5
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.ellipse(mx, my - mh, mr, mr * 0.65, 0, Math.PI, 0)
+      ctx.quadraticCurveTo(mx + mr, my - mh + mr * 0.3, mx, my - mh + mr * 0.1)
+      ctx.quadraticCurveTo(mx - mr, my - mh + mr * 0.3, mx, my - mh)
+      ctx.closePath()
+      const mg = ctx.createRadialGradient(mx - mr * 0.2, my - mh - mr * 0.2, 0, mx, my - mh, mr)
+      mg.addColorStop(0, rgba(cr + 30, cg + 30, cb + 20, 0.9))
+      mg.addColorStop(0.6, rgba(cr, cg, cb, 0.75))
+      mg.addColorStop(1, rgba(cr - 30, cg - 20, cb - 15, 0.5))
+      ctx.fillStyle = mg
+      ctx.fill()
+      const spots = 2 + Math.floor(h(i, 11, 4010) * 4)
+      for (let s = 0; s < spots; s++) {
+        const sx = mx + (h(i * 7 + s, 11, 4020 + s) - 0.5) * mr * 1.4
+        const sy = (my - mh) + (h(i * 7 + s, 11, 4030 + s) - 0.5) * mr * 0.8
+        ctx.beginPath()
+        ctx.arc(sx, sy, 1 + h(i * 7 + s, 11, 4040 + s) * 1.5, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255,255,255,${(0.25 + h(i * 7 + s, 11, 4050 + s) * 0.35).toFixed(2)})`
+        ctx.fill()
+      }
+    }
+    for (let i = 0; i < n * 0.08; i++) {
+      const [kx, ky] = rp(i, 30)
+      const kr = 3 + h(i, 12, 5000) * 4
+      ctx.beginPath()
+      ctx.ellipse(kx, ky, kr, kr * 1.3, 0, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(225,220,210,${(0.5 + h(i, 12, 5001) * 0.35).toFixed(2)})`
+      ctx.fill()
+      ctx.beginPath()
+      ctx.arc(kx - kr * 0.2, ky - kr * 0.15, kr * 0.15, 0, Math.PI * 2)
+      ctx.arc(kx + kr * 0.2, ky - kr * 0.15, kr * 0.15, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(20,20,25,0.6)'
+      ctx.fill()
+      ctx.beginPath()
+      ctx.ellipse(kx, ky + kr * 0.25, kr * 0.2, kr * 0.12, 0, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(20,20,25,0.45)'
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.15; i++) {
+      const fx = mh(i, 6100) * W
+      const fy = mh(i, 6101) * H
+      const fr = 2 + h(i, 13, 6002) * 4
+      const bright = 0.4 + h(i, 13, 6003) * 0.5
+      ctx.beginPath()
+      ctx.arc(fx, fy, fr, 0, Math.PI * 2)
+      const fg = ctx.createRadialGradient(fx, fy, 0, fx, fy, fr)
+      fg.addColorStop(0, `rgba(180,235,120,${bright.toFixed(2)})`)
+      fg.addColorStop(0.4, `rgba(120,210,80,${(bright * 0.55).toFixed(2)})`)
+      fg.addColorStop(1, 'rgba(60,150,40,0)')
+      ctx.fillStyle = fg
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.04; i++) {
+      const [px, py] = rp(i, 40)
+      const petals = 5 + Math.floor(h(i, 14, 7000) * 4)
+      const pr = 3 + h(i, 14, 7001) * 5
+      const hue = h(i, 14, 7002)
+      let cr: number, cg: number, cb: number
+      if (hue < 0.25) { cr = 245; cg = 190; cb = 210 }
+      else if (hue < 0.5) { cr = 240; cg = 230; cb = 140 }
+      else if (hue < 0.75) { cr = 200; cg = 180; cb = 255 }
+      else { cr = 255; cg = 200; cb = 150 }
+      for (let p = 0; p < petals; p++) {
+        const pa = (p / petals) * Math.PI * 2
+        const ppx = px + Math.cos(pa) * pr * 0.6
+        const ppy = py + Math.sin(pa) * pr * 0.6
+        ctx.beginPath()
+        ctx.ellipse(ppx, ppy, pr * 0.45, pr * 0.25, pa, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${cr},${cg},${cb},0.65)`
+        ctx.fill()
+      }
+      ctx.beginPath()
+      ctx.arc(px, py, pr * 0.2, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(255,230,100,0.8)'
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.03; i++) {
+      const [rx, ry] = rp(i, 50)
+      const rr = 5 + h(i, 15, 8000) * 10
+      ctx.beginPath()
+      ctx.ellipse(rx, ry, rr, rr * 0.7, h(i, 15, 8001) * Math.PI, 0, Math.PI * 2)
+      const shade = 55 + h(i, 15, 8002) * 35
+      ctx.fillStyle = rgb(shade - 5, shade + 8, shade - 10)
+      ctx.fill()
+      ctx.fillStyle = `rgba(45,75,35,${(0.2 + h(i, 15, 8003) * 0.3).toFixed(2)})`
+      ctx.beginPath()
+      ctx.ellipse(rx, ry - rr * 0.2, rr * 1.1, rr * 0.5, 0, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 1.2; i++) {
+      const gx2 = mh(i, 9000) * W
+      const gy2 = mh(i, 9001) * H
+      const gh = 4 + h(i, 16, 9002) * 14
+      const lean = (h(i, 16, 9003) - 0.5) * 7
+      const green = 60 + Math.floor(h(i, 16, 9004) * 80)
+      ctx.beginPath()
+      ctx.moveTo(gx2, gy2)
+      ctx.quadraticCurveTo(gx2 + lean * 0.6, gy2 - gh * 0.6, gx2 + lean, gy2 - gh)
+      ctx.strokeStyle = `rgba(22,${green},12,0.55)`
+      ctx.lineWidth = 1 + h(i, 16, 9005) * 1.2
       ctx.stroke()
     }
   } else if (theme === 'infernal') {
-    const nf = 4 + Math.floor(h(0, 10, 9999) * 6)
-    for (let i = 0; i < nf; i++) {
-      const x1 = h(i, 10, 3000) * W, y1 = h(i, 10, 3001) * H
-      const x2 = h(i, 10, 3002) * W, y2 = h(i, 10, 3003) * H
-      const cx = h(i, 10, 3004) * W, cy = h(i, 10, 3005) * H
+    const nFlows = 6 + Math.floor(h(0, 17, 9999) * 6)
+    for (let i = 0; i < nFlows; i++) {
+      const x1 = mh(i, 3100) * W, y1 = mh(i, 3101) * H
+      const x2 = mh(i, 3102) * W, y2 = mh(i, 3103) * H
+      const cx = (x1 + x2) / 2 + (mh(i, 3104) - 0.5) * W * 0.5
+      const cy = (y1 + y2) / 2 + (mh(i, 3105) - 0.5) * H * 0.5
       ctx.lineCap = 'round'
       ctx.beginPath()
       ctx.moveTo(x1, y1)
       ctx.quadraticCurveTo(cx, cy, x2, y2)
-      ctx.strokeStyle = 'rgba(255,95,8,0.14)'
-      ctx.lineWidth = 14 + h(i, 10, 3006) * 12
+      ctx.strokeStyle = 'rgba(255,100,10,0.22)'
+      ctx.lineWidth = 18 + h(i, 17, 3006) * 16
       ctx.stroke()
       ctx.beginPath()
       ctx.moveTo(x1, y1)
       ctx.quadraticCurveTo(cx, cy, x2, y2)
-      ctx.strokeStyle = 'rgba(255,135,18,0.35)'
-      ctx.lineWidth = 5 + h(i, 10, 3007) * 5
+      ctx.strokeStyle = 'rgba(255,145,25,0.5)'
+      ctx.lineWidth = 7 + h(i, 17, 3007) * 7
       ctx.stroke()
       ctx.beginPath()
       ctx.moveTo(x1, y1)
       ctx.quadraticCurveTo(cx, cy, x2, y2)
-      ctx.strokeStyle = `rgba(255,${175 + Math.floor(h(i, 10, 3008) * 65)},55,0.7)`
-      ctx.lineWidth = 1.5 + h(i, 10, 3009) * 2
+      ctx.strokeStyle = `rgba(255,${185 + Math.floor(h(i, 17, 3008) * 55)},65,0.8)`
+      ctx.lineWidth = 2.5 + h(i, 17, 3009) * 2.5
       ctx.stroke()
       ctx.beginPath()
       ctx.moveTo(x1, y1)
       ctx.quadraticCurveTo(cx, cy, x2, y2)
-      ctx.strokeStyle = 'rgba(255,245,190,0.35)'
-      ctx.lineWidth = 0.5
+      ctx.strokeStyle = 'rgba(255,250,200,0.4)'
+      ctx.lineWidth = 0.8
       ctx.stroke()
     }
-    for (let i = 0; i < Math.floor(wc * 0.08); i++) {
-      const x = h(i, 11, 4000) * W, y = h(i, 11, 4001) * H
-      if (!isW(x, y)) continue
-      const r = 10 + h(i, 11, 4002) * 28
+    for (let i = 0; i < n * 0.08; i++) {
+      const [lx, ly] = rp(i, 10)
+      const r = 8 + h(i, 18, 4003) * 24
       ctx.beginPath()
-      ctx.ellipse(x, y, r, r * (0.45 + h(i, 11, 4003) * 0.55), h(i, 11, 4004) * Math.PI, 0, Math.PI * 2)
-      const pg = ctx.createRadialGradient(x, y, 0, x, y, r)
-      pg.addColorStop(0, 'rgba(255,225,75,0.6)')
-      pg.addColorStop(0.3, 'rgba(255,130,18,0.48)')
-      pg.addColorStop(0.6, 'rgba(215,50,5,0.3)')
-      pg.addColorStop(1, 'rgba(90,12,2,0)')
+      ctx.ellipse(lx, ly, r, r * (0.4 + h(i, 18, 4004) * 0.6), h(i, 18, 4005) * Math.PI, 0, Math.PI * 2)
+      const pg = ctx.createRadialGradient(lx, ly, 0, lx, ly, r)
+      pg.addColorStop(0, 'rgba(255,245,110,0.9)')
+      pg.addColorStop(0.25, 'rgba(255,165,40,0.7)')
+      pg.addColorStop(0.6, 'rgba(230,70,12,0.4)')
+      pg.addColorStop(1, 'rgba(105,20,5,0)')
       ctx.fillStyle = pg
       ctx.fill()
     }
-    for (let i = 0; i < Math.floor(wc * 0.4); i++) {
-      const x = h(i, 12, 5000) * W, y = h(i, 12, 5001) * H
-      if (!isW(x, y)) continue
-      const r = 0.5 + h(i, 12, 5002) * 2.8
+    for (let i = 0; i < n * 0.06; i++) {
+      const [rx, ry] = rp(i, 20)
+      const r = 8 + h(i, 18, 5010) * 18
+      const shade = 45 + h(i, 18, 5020) * 35
       ctx.beginPath()
-      ctx.arc(x, y, r, 0, Math.PI * 2)
-      const eg = ctx.createRadialGradient(x, y, 0, x, y, r)
-      eg.addColorStop(0, 'rgba(255,225,75,0.75)')
-      eg.addColorStop(0.5, 'rgba(255,108,12,0.4)')
-      eg.addColorStop(1, 'rgba(175,28,4,0)')
+      ctx.ellipse(rx, ry, r, r * (0.5 + h(i, 18, 5030) * 0.5), h(i, 18, 5040) * Math.PI, 0, Math.PI * 2)
+      ctx.fillStyle = rgb(shade, shade - 15, shade - 22)
+      ctx.fill()
+      ctx.strokeStyle = `rgba(${shade + 25},${shade},${shade - 10},0.4)`
+      ctx.lineWidth = 1
+      ctx.stroke()
+    }
+    for (let i = 0; i < n * 0.03; i++) {
+      const [cx, cy] = rp(i, 30)
+      const len = 10 + h(i, 19, 6000) * 25
+      const ang = h(i, 19, 6001) * Math.PI * 2
+      ctx.beginPath()
+      ctx.moveTo(cx, cy)
+      ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len)
+      ctx.strokeStyle = 'rgba(255,160,30,0.35)'
+      ctx.lineWidth = 4 + h(i, 19, 6002) * 4
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(cx, cy)
+      ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len)
+      ctx.strokeStyle = 'rgba(255,220,70,0.55)'
+      ctx.lineWidth = 1.5
+      ctx.stroke()
+    }
+    for (let i = 0; i < n * 1; i++) {
+      const ex = mh(i, 5100) * W, ey = mh(i, 5101) * H
+      const er = 1 + h(i, 20, 5002) * 3.5
+      ctx.beginPath()
+      ctx.arc(ex, ey, er, 0, Math.PI * 2)
+      const eg = ctx.createRadialGradient(ex, ey, 0, ex, ey, er)
+      eg.addColorStop(0, 'rgba(255,240,90,0.92)')
+      eg.addColorStop(0.5, 'rgba(255,130,20,0.55)')
+      eg.addColorStop(1, 'rgba(190,35,5,0)')
       ctx.fillStyle = eg
+      ctx.fill()
+    }
+    for (let i = 0; i < n * 0.025; i++) {
+      const [sx, sy] = rp(i, 40)
+      const sr = 5 + h(i, 21, 7000) * 12
+      ctx.beginPath()
+      ctx.arc(sx, sy, sr, 0, Math.PI * 2)
+      const sg = ctx.createRadialGradient(sx, sy, 0, sx, sy, sr)
+      sg.addColorStop(0, 'rgba(0,0,0,0.5)')
+      sg.addColorStop(0.5, 'rgba(40,10,5,0.3)')
+      sg.addColorStop(1, 'rgba(80,25,10,0)')
+      ctx.fillStyle = sg
       ctx.fill()
     }
   }
@@ -875,7 +1134,7 @@ export default function DungeonMap({
     if (!container) return
     const fit = () => {
       const cw = container.clientWidth - 24
-      const ch = container.clientHeight - 60
+      const ch = container.clientHeight - 24
       const mapW = width * S
       const mapH = height * S
       if (mapW <= 0 || mapH <= 0) return
@@ -892,7 +1151,21 @@ export default function DungeonMap({
   const np = { pointerEvents: 'none' as const }
 
   return (
-    <div ref={containerRef} className="dungeon-map-container" style={{ background: `radial-gradient(ellipse at center, ${t.bg[0]} 0%, ${t.bg[1]} 100%)` }}>
+    <div className="dungeon-map-outer" style={{ background: `radial-gradient(ellipse at center, ${t.bg[0]} 0%, ${t.bg[1]} 100%)` }}>
+      {isDM && (
+        <div className="map-theme-bar">
+          {(Object.keys(THEMES) as MapTheme[]).map(k => (
+            <button key={k}
+              className={`map-theme-btn ${theme === k ? 'map-theme-btn--active' : ''}`}
+              onClick={() => setTheme(k)}
+              style={{ '--swatch-a': THEMES[k].swatch[0], '--swatch-b': THEMES[k].swatch[1] } as React.CSSProperties}
+            >
+              <span className="map-theme-swatch" />{THEMES[k].label}
+            </button>
+          ))}
+        </div>
+      )}
+      <div ref={containerRef} className="dungeon-map-container">
       <div
         className="dungeon-map-wrapper"
         style={{
@@ -1010,20 +1283,6 @@ export default function DungeonMap({
           )}
         </svg>
       </div>
-      <div className="map-toggle-row" style={{ justifyContent: 'center' }}>
-        {isDM && (
-          <div className="map-theme-bar">
-            {(Object.keys(THEMES) as MapTheme[]).map(k => (
-              <button key={k}
-                className={`map-theme-btn ${theme === k ? 'map-theme-btn--active' : ''}`}
-                onClick={() => setTheme(k)}
-                style={{ '--swatch-a': THEMES[k].swatch[0], '--swatch-b': THEMES[k].swatch[1] } as React.CSSProperties}
-              >
-                <span className="map-theme-swatch" />{THEMES[k].label}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   )
